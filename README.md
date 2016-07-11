@@ -1,1 +1,2 @@
 # shortcut
+Short Sea bulk and general-cargo ships spend 40%-60% of their time on average sailing empty. Shortcut is a web based marketplace where ship operators and cargo owners can meet, optimize and plan their routes and production.
