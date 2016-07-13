@@ -8,7 +8,6 @@ class CreateCargoOwners < ActiveRecord::Migration[5.0]
       t.string	"email_address"
       t.string	"phone_number"
       t.string	"country"
-      t.string  "description"
       t.timestamps
     end
   end
