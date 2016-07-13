@@ -1,0 +1,2 @@
+class ShipOwner < ApplicationRecord
+end
