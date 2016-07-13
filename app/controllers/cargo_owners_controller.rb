@@ -1,0 +1,2 @@
+class CargoOwnersController < ApplicationController
+end
