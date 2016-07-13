@@ -1,2 +1,3 @@
 class Marketplace < ApplicationRecord
+
 end
