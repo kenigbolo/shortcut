@@ -1,1 +1,5 @@
 <%= @user.username %>
+
+<% if @user.id = session[:current_user_id] %>
+	<%= link_to "Add Cargo", controller: "cargos", action: "show", id: @user.id %>
+<% end %>

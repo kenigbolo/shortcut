@@ -1,0 +1,61 @@
+<% if session[:current_user_id] != nil %>
+
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+
+      <%= form_tag("/cargo/new", method: "post") do %>      
+    
+        <label for="weight">Weight</label>
+        <input type="number" name="weight" id="weight" required>
+        <br>
+
+        <label for="volume">Volume</label>
+        <input type="number" name="volume" id="volume" required>
+        <br>
+        
+        <label for="density">Density</label>
+        <input type="number" name="density" id="density" >
+        <br>
+        
+        <label for="arrival_date">Arrival Date</label>
+        <input type="date" name="arrival_date" id="arrival_date" required>
+        <br>
+
+        <label for="status">Cargo Status</label>
+        <select id="status" name="status">
+          <option>Available</option>
+          <option>In Transit</option>
+          <option>Done</option>
+        </select>
+        <br>
+
+        <label for="cargo_type">Cargo Type</label>
+        <select id="cargo_type" name="status">
+          <option > Liquid Bulk</option>
+          <option > Dry Bulk </option>
+          <option > Containers </option>
+          <option > Roll on Roll </option>
+          <option > Others </option>
+        </select>
+        
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description" required>
+        <br>
+        
+        <label for="phone_number">Phone Number</label>
+        <input type="tel" name="phone_number" id="phone_number" required>
+        <br>
+        
+        <label for="country">Country of residence</label>
+        <input type="text" name="country" id="country" required>
+        <br>
+        <br>
+        <input type="submit" name="commit" value="Create my account" data-disable-with="Create my account">
+      <% end %>
+    </div>
+  </div>
+  <!-- End of form -->
+<% else %>
+  <h5>You must be logged in to add a cargo</h5>
+  <%= link_to "Click to Login", controller: "sessions", action: "cargo_login" %>
+<% end %>

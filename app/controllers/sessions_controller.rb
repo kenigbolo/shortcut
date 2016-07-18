@@ -20,11 +20,11 @@ class SessionsController < ApplicationController
 				render 'cargo_owners/profile'
 			else
 				flash[:alert] = "You've entered the wrong password"
-				render 'cargo-login'
+				redirect_to cargo_login_path
 			end
 		else
 			flash[:alert] = "You've entered an incorrect username"
-			render 'cargo-login'
+			redirect_to cargo_login_path
 		end
 	end
 
