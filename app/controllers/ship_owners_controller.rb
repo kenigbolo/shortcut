@@ -4,6 +4,10 @@ class ShipOwnersController < ApplicationController
 
 	end
 
+	def show
+
+	end
+
 	def new
 		username = params[:username]
 		password = params[:password]
@@ -22,6 +26,9 @@ class ShipOwnersController < ApplicationController
 				flash[:alert] = "User already exists"
 				render 'index'
 			end
+		elsif username.empty?
+			flash[:alert] = "Username cannot be empty"
+			render 'index'
 		elsif password != second_password
 			flash[:alert] = "Passwords are not the same"
 			render 'index'

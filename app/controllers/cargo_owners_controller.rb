@@ -4,6 +4,10 @@ class CargoOwnersController < ApplicationController
 		
 	end
 
+	def show
+		
+	end
+
 	def new
 		username = params[:username]
 		password = params[:password]

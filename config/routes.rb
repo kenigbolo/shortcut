@@ -1,28 +1,32 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  #Route to default Homepage
   get '/', to: 'marketplace#index'
 
-  get '/register', to: 'marketplace#new', as: :new_user
-
-  get '/login', to: 'sessions#new', as: :user_login
-
-  get '/cargo-login', to: 'sessions#new', as: :cargo_login
-
-  get '/ship-login', to: 'sessions#new', as: :ship_login
-
+  #Routes from session page
   get '/logout', to: 'sessions#destroy', as: :logout
 
   post '/cargo-login', to: 'sessions#create_cargo'
 
   post '/ship-login', to: 'sessions#create_ship'
 
-  get '/register/cargo-owner', to: 'cargo_owners#index', as: :cargo_owner_path
+  # Routes from landing pagee
+  get '/cargo-owner', to: 'cargo_owners#show'
 
-  get '/register/ship-owner', to: 'ship_owners#index', as: :ship_owner_path
+  get '/ship-owner', to: 'ship_owners#show'
 
+  # Routes from  Cargo owner page
+  get '/cargo-owner/new', to: 'cargo_owners#index', as: :cargo_owner_path
+
+  get '/cargo-owner/login', to: 'sessions#cargo_login'
 
   post '/register/cargo-owner', to: 'cargo_owners#new'
+
+  #Routes from Ship owner Page
+  get '/ship-owner/new', to: 'ship_owners#index', as: :ship_owner_path
+
+  get '/ship-owner/login', to: 'sessions#ship_login'
 
   post '/register/ship-owner', to: 'ship_owners#new'
 

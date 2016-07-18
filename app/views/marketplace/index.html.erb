@@ -1,11 +1,15 @@
+<% if flash[:alert] %>
+<%= flash[:alert] %>
+<% end %>
+
 <body>
 	<div class="centered hero-section w-section cen">
 		<div class="w-container" data-ix="new-interaction">
 			<h1 class="hero-heading" data-ix="fade-in-bottom-page-loads">SHORTCUT</h1>
 			<div class="hero-sub" data-ix="fade-in-bottom-page-loads">DISRUPTING THE SHORT SEA MARKET</div>
 			<div data-ix="fade-in-bottom-page-loads">
-				<a class="button" href="/register">SIGN UP</a>
-				<a class="all-caps hollow-button" href="/login">LOGIN</a>
+				<a class="button" href="/cargo-owner">CARGO OWNER</a>
+				<a class="all-caps hollow-button" href="/ship-owner">SHIP OWNER</a>
 			</div>
 		</div>
 	</div>
@@ -163,16 +167,18 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="center footer w-section">
-		<div class="w-container">
-			<div class="footer-text">Copyright Shortcut Inc 2016</div>
-		</div>
-	</div>
-
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-	<script type="text/javascript" src="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/js/webflow.30539563a.js"></script>
-	<!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+    <footer>
+	    <div class="center footer w-section">
+		    <div class="w-container">
+		      <div class="footer-text">
+		      	<p>Copyright Shortcut Inc 2016</p>
+		      </div>
+		    </div>
+	     </div>
+	</footer> 
+	
+  	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  	<script type="text/javascript" src="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/js/webflow.30539563a.js"></script>
 </body>
 
 </html>
