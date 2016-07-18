@@ -1,0 +1,46 @@
+<% if flash[:alert] %>
+<%= flash[:alert] %>
+<% end %>
+
+<h4>Sign up</h4>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    
+    <%= form_tag("/register/ship-owner", method: "post") do %>
+      <%= label_tag(:username, "Username") %>
+      <%= text_field_tag(:username) %>
+      <br>
+      <%= label_tag(:password, "Password") %>
+      <%= text_field_tag(:password) %>
+      <br>
+      <%= label_tag(:repeat_password, "Repeat Password") %>
+      <%= text_field_tag(:repeat_password) %>
+      <br>
+      <%= label_tag(:first_name, "First Name") %>
+      <%= text_field_tag(:first_name) %>
+      <br>
+      <%= label_tag(:last_name, "Last Name") %>
+      <%= text_field_tag(:last_name) %>
+      <br>
+      <%= label_tag(:email_address, "Email") %>
+      <%= text_field_tag(:email_address) %>
+      <br>
+      <%= label_tag(:phone_number, "Phone Number") %>
+      <%= text_field_tag(:phone_number) %>
+      phone_number
+      <br>
+      <%= label_tag(:country, "Country of residence") %>
+      <%= text_field_tag(:country) %>
+      <br>
+      <%= label_tag(:company_name, "Name of Company") %>
+      <%= text_field_tag(:company_name) %>
+      <br>
+      <%= label_tag(:company_address, "Address of Company") %>
+      <%= text_field_tag(:company_address) %>
+      <br>
+      <%= submit_tag("Create my account") %>
+    <% end %>
+
+  </div>
+</div>

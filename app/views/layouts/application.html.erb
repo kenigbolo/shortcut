@@ -6,9 +6,47 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Webflow">
+    <link rel="stylesheet" type="text/css" href="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/css/kenigbolo-meya-stephen-s-trendy-site.webflow.2dba93c49.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+    <script>WebFont.load({
+      google: {
+        families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Roboto:300,regular,500"]
+      }
+    });</script>
+    <script type="text/javascript" src="https://daks2k3a4ib2z.cloudfront.net/0globals/modernizr-2.7.1.js"></script>
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/favicon.ico">
+    <link rel="apple-touch-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png">
+
   </head>
 
   <body>
+
+  	<div class="navigation-bar w-nav" data-animation="default" data-collapse="medium" data-contain="1" data-duration="400">
+      <div class="w-container">
+        <a class="brand-link w-nav-brand" href="/">
+          <h1 class="brand-text">SHORTCUT</h1>
+        </a>
+
+        <nav class="navigation-menu w-nav-menu" role="navigation">
+          <a class="navigation-link w-nav-link" href="/">Home</a>
+          <a class="navigation-link w-nav-link" href="/contact">Contact</a>
+          <!-- If session is not nil -->
+          <a class="navigation-link w-nav-link" href="/logout">Logout</a>
+        </nav>
+
+        <div class="hamburger-button w-nav-button">
+          <div class="w-icon-nav-menu"></div>
+        </div>
+
+      </div>
+
+    </div>
+
     <%= yield %>
   </body>
 </html>
