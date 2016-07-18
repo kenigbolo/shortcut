@@ -36,7 +36,10 @@
           <a class="navigation-link w-nav-link" href="/">Home</a>
           <a class="navigation-link w-nav-link" href="/contact">Contact</a>
           <!-- If session is not nil -->
-          <a class="navigation-link w-nav-link" href="/logout">Logout</a>
+          <% if session[:current_user_id] != nil %>
+            <a class="navigation-link w-nav-link" href="/logout">Logout</a>
+          <%end%>
+          <!-- End of session is not nil -->
         </nav>
 
         <div class="hamburger-button w-nav-button">

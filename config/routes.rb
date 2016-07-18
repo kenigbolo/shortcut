@@ -21,14 +21,18 @@ Rails.application.routes.draw do
 
   get '/cargo-owner/login', to: 'sessions#cargo_login'
 
+  get '/cargo-owner/:id', to: 'cargo_owners#profile'
+
   post '/register/cargo-owner', to: 'cargo_owners#new'
+
 
   #Routes from Ship owner Page
   get '/ship-owner/new', to: 'ship_owners#index', as: :ship_owner_path
 
   get '/ship-owner/login', to: 'sessions#ship_login'
 
-  post '/register/ship-owner', to: 'ship_owners#new'
+  get '/ship-owner/:id', to: 'ship_owners#profile'
 
+  post '/register/ship-owner', to: 'ship_owners#new'
 
 end

@@ -33,11 +33,11 @@ class ShipOwnersController < ApplicationController
 			flash[:alert] = "Passwords are not the same"
 			render 'index'
 		else
-			flash[:alert] = "Account successfully created. Please login to your account"
 			ShipOwner.create(username: username, password_digest: password, country: country,
 				first_name: first_name,last_name: last_name, email_address: email, phone_number: phone_number,
 				company_address: company_address, company_name: company_name)
-			redirect_to '/'
+			flash[:alert] = "Account successfully created. Please login to your account"
+			redirect_to 'show'
 		end
 	end
 end

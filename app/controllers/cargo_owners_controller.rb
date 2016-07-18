@@ -19,11 +19,14 @@ class CargoOwnersController < ApplicationController
 		country = params[:country]
 		@user = CargoOwner.where("username = ?", username)
 		
-		if @users != nil
+		if @user != nil
 			if @user[0].username == username
 				flash[:alert] = "User already exists"
 				render 'index'
 			end
+		elsif username.empty?
+			flash[:alert] = "Username cannot be empty"
+			render 'index'
 		elsif password != second_password
 			flash[:alert] = "Passwords are not the same"
 			render 'index'
@@ -32,6 +35,16 @@ class CargoOwnersController < ApplicationController
 			last_name: last_name, email_address: email, phone_number: phone_number, country: country)
 			flash[:alert] = "Account successfully created. Please login to your account"
 			render 'show'
+		end
+	end
+
+	def profile
+		user_id = params[:id]
+		user = CargoOwner.where("id = ?", id)
+
+		if user != nil
+			@user = user[0]
+			render 'profile'
 		end
 	end
 end

@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
 		if @user.length > 0
 			if @user[0].password_digest == password
 				session[:current_user_id] = @user[0].id
+				@user = @user[0]
 				render 'cargo_owners/profile'
 			else
 				flash[:alert] = "You've entered the wrong password"
@@ -46,6 +47,11 @@ class SessionsController < ApplicationController
 			flash[:alert] = "You've entered an incorrect username"
 			render 'ship-login'
 		end
+	end
+
+	def destroy
+		session[:current_user_id] = nil
+		render 'marketplace/index'
 	end
 
 end
