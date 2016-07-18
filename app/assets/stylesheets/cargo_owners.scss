@@ -4,8 +4,8 @@
 
 /* forms */
 
-// @import "bootstrap-sprockets";
-// @import "bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 /* mixins, variables, etc. */
 
@@ -36,4 +36,32 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+}
+
+html, body, #container { height: 100%; }
+body > #container { height: auto; min-height: 100%; }
+
+#footer {
+  clear: both;
+  position: relative;
+  z-index: 10;
+  height: 3em;
+  margin-top: 7em;
+  text-align: -webkit-center;
+  background-color: #383838;
+}
+
+#content { padding-bottom: 2em; }
+
+.sign-up {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+  margin-bottom: 2em;
+}
+
+label {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
 }
