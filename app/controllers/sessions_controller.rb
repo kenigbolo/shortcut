@@ -14,9 +14,9 @@ class SessionsController < ApplicationController
 
 		@user = CargoOwner.where("username = ?", username)
 		if @user.length > 0
-			if @user[0].password == password
+			if @user[0].password_digest == password
 				session[:current_user_id] = @user[0].id
-				render 'cargo_owner/profile'
+				render 'cargo_owners/profile'
 			else
 				flash[:alert] = "You've entered the wrong password"
 				render 'cargo-login'
@@ -34,9 +34,10 @@ class SessionsController < ApplicationController
 
 		@user = ShipOwner.where("username = ?", username)
 		if @user.length > 0
-			if @user[0].password == password
+			if @user[0].password_digest == password
 				session[:current_user_id] = @user[0].id
-				render 'ship_owner/profile'
+				@user = @user[0]
+				render 'ship_owners/profile'
 			else
 				flash[:alert] = "You've entered the wrong password"
 				render 'ship-login'

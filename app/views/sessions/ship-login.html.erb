@@ -2,18 +2,25 @@
 <%= flash[:alert] %>
 <% end %>   
 
-<h1>Existing User</h1>
 
-<%= form_tag("/ship-login", method: "post") do %>
-	<%= label_tag(:username, "Username") %>
-	<br>
-	<%= text_field_tag(:username) %>
-	<br>
-	<%= label_tag(:password, "Password") %>
-	<br>
-	<%= password_field_tag(:password) %>
-	<br>
-	<br>
-	<%= submit_tag("Login") %>
-	
-<% end %>
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<h1>Existing User</h1>
+
+		<%= form_tag("/ship-login", method: "post") do %>
+			<%= label_tag(:username, "Username") %>
+			<br>
+			<%= text_field_tag(:username) %>
+			<br>
+			<%= label_tag(:password, "Password") %>
+			<br>
+			<%= password_field_tag(:password) %>
+			<br>
+			<br>
+			<%= submit_tag("Login") %>
+			
+		<% end %>
+	</div>
+</div>
+
+
