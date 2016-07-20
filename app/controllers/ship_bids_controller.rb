@@ -1,0 +1,2 @@
+class ShipBidsController < ApplicationController
+end

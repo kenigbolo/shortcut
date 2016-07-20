@@ -1,0 +1,2 @@
+module ShipBidsHelper
+end

@@ -16,6 +16,9 @@ class SessionsController < ApplicationController
 		if @user.length > 0
 			if @user[0].password_digest == password
 				session[:current_user_id] = @user[0].id
+				if @user.class == CargoOwner
+					session[:current_user_class] = "CargoOwner"
+				end
 				@user = @user[0]
 				redirect_to controller: 'cargo_owners', action: 'profile', id: @user.id
 			else
@@ -37,7 +40,9 @@ class SessionsController < ApplicationController
 		if @user.length > 0
 			if @user[0].password_digest == password
 				session[:current_user_id] = @user[0].id
-				session[:current_user_class] = @user.class
+				if @user.class == ShipOwner
+					session[:current_user_class] = "ShipOwner"
+				end
 				@user = @user[0]
 				redirect_to controller: 'ship_owners', action: 'profile', id: @user.id
 			else

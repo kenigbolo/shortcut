@@ -11,11 +11,9 @@ Rails.application.routes.draw do
   #Routes from session page
   get '/logout', to: 'sessions#destroy', as: :logout
 
-  get '/cargo-login', to: 'sessions#cargo_login'
+  post '/cargo-owner/login', to: 'sessions#login_cargo'
 
-  post '/cargo-login', to: 'sessions#login_cargo'
-
-  post '/ship-login', to: 'sessions#login_ship'
+  post '/ship-owner/login', to: 'sessions#login_ship'
 
   # Routes from landing pagee
   get '/cargo-owner', to: 'cargo_owners#show'
@@ -39,13 +37,21 @@ Rails.application.routes.draw do
 
   get '/ship-owner/login', to: 'sessions#ship_login', as: :ship_login_path
 
+  get 'ship-owner/add-cargo/:id', to: 'ships#show'
+
   get '/ship-owner/:id', to: 'ship_owners#profile'
 
   post '/register/ship-owner', to: 'ship_owners#new'
 
 
+
+
   #Routes from Cargo Page
   post '/cargo/new', to: 'cargos#new'
+
+  #Routes from Ship Page
+  post '/ship/new', to: 'ships#new'
+
 
   #Routes from profile page
   get '/cargo-owner/:id/bid', to: 'bids#edit'

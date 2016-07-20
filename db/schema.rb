@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720145248) do
+ActiveRecord::Schema.define(version: 20160720162811) do
 
   create_table "bidders", force: :cascade do |t|
     t.integer  "bid_id"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20160720145248) do
     t.string   "ship_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.date     "depature_date"
     t.index ["ship_owner_id"], name: "index_ships_on_ship_owner_id"
   end
 

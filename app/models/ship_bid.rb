@@ -1,0 +1,2 @@
+class ShipBid < ApplicationRecord
+end

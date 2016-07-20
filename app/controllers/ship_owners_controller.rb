@@ -40,4 +40,15 @@ class ShipOwnersController < ApplicationController
 			redirect_to 'show'
 		end
 	end
+
+	def profile
+		user_id = params[:id]
+		user = ShipOwner.where("id = ?", user_id)
+
+		if user != nil
+			@user = user[0]
+			@ships = Ship.where("ship_owner_id = ?", user_id)
+			render 'profile'
+		end
+	end
 end

@@ -44,6 +44,7 @@ class CargosController < ApplicationController
 		else
 			# destination and depature cannot be the same
 			flash[:alert] = "Departure port and destination port cannot be the same"
+			@ports = Port.all
 			render 'show'
 		end
 	end
