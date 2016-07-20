@@ -40,10 +40,11 @@ class CargoOwnersController < ApplicationController
 
 	def profile
 		user_id = params[:id]
-		user = CargoOwner.where("id = ?", id)
+		user = CargoOwner.where("id = ?", user_id)
 
 		if user != nil
 			@user = user[0]
+			@cargo = Cargo.where("cargo_owner_id = ?", user_id)
 			render 'profile'
 		end
 	end

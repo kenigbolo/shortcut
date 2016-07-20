@@ -1,0 +1,13 @@
+<link rel="stylesheet" type="text/css" href="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/css/kenigbolo-meya-stephen-s-trendy-site.webflow.2dba93c49.css">
+
+<% @cargo.each do |cargo| %>
+	<p>Description: <%= cargo.description %> </p>
+	<p> From: <%= cargo.present_port %> </p>
+	<p> To: <%= cargo.destination_port %> </p>
+	<p> Type: <%= cargo.cargo_type %> </p>
+	<p> Weight: <%= cargo.weight %> tonnes </p>
+	<p> Volume: <%= cargo.volume %> m<sup>3</sup></p>
+
+	<p><%= link_to "Place bid", controller: "bids", action: "show", id: cargo.id %></p>
+	<br>
+<% end %>

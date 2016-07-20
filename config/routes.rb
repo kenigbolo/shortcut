@@ -4,8 +4,14 @@ Rails.application.routes.draw do
   #Route to default Homepage
   get '/', to: 'marketplace#index'
 
+  get '/marketplace', to: 'marketplace#show'
+
+  get '/marketplace/cargo/bid', to: 'bids#show'
+
   #Routes from session page
   get '/logout', to: 'sessions#destroy', as: :logout
+
+  get '/cargo-login', to: 'sessions#cargo_login'
 
   post '/cargo-login', to: 'sessions#create_cargo'
 
@@ -19,9 +25,11 @@ Rails.application.routes.draw do
   # Routes from  Cargo owner page
   get '/cargo-owner/new', to: 'cargo_owners#index', as: :cargo_owner_path
 
-  get '/cargo-owner/login', to: 'sessions#cargo_login'
+  get '/cargo-owner/login', to: 'sessions#cargo_login', as: :cargo_login_path
 
   get '/cargo-owner/:id', to: 'cargo_owners#profile'
+
+  get 'cargo-owner/add-cargo/:id', to: 'cargos#show'
 
   post '/register/cargo-owner', to: 'cargo_owners#new'
 
@@ -29,10 +37,19 @@ Rails.application.routes.draw do
   #Routes from Ship owner Page
   get '/ship-owner/new', to: 'ship_owners#index', as: :ship_owner_path
 
-  get '/ship-owner/login', to: 'sessions#ship_login'
+  get '/ship-owner/login', to: 'sessions#ship_login', as: :ship_login_path
 
   get '/ship-owner/:id', to: 'ship_owners#profile'
 
   post '/register/ship-owner', to: 'ship_owners#new'
+
+
+  #Routes from Cargo Page
+  post '/cargo/new', to: 'cargos#new'
+
+  #Routes from profile page
+  get '/cargo-owner/:id/bid', to: 'bids#edit'
+
+  post '/bid/edit/', to: 'bids#create'
 
 end

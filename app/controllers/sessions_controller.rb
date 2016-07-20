@@ -20,11 +20,11 @@ class SessionsController < ApplicationController
 				render 'cargo_owners/profile'
 			else
 				flash[:alert] = "You've entered the wrong password"
-				render 'cargo-login'
+				redirect_to cargo_login_path
 			end
 		else
 			flash[:alert] = "You've entered an incorrect username"
-			render 'cargo-login'
+			redirect_to cargo_login_path
 		end
 	end
 
@@ -37,6 +37,7 @@ class SessionsController < ApplicationController
 		if @user.length > 0
 			if @user[0].password_digest == password
 				session[:current_user_id] = @user[0].id
+				session[:current_user_class] = @user.class
 				@user = @user[0]
 				render 'ship_owners/profile'
 			else
