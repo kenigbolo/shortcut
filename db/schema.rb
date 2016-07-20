@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718162117) do
+ActiveRecord::Schema.define(version: 20160720145248) do
+
+  create_table "bidders", force: :cascade do |t|
+    t.integer  "bid_id"
+    t.text     "name"
+    t.text     "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bid_id"], name: "index_bidders_on_bid_id"
+  end
 
   create_table "bids", force: :cascade do |t|
     t.integer  "cargo_id"

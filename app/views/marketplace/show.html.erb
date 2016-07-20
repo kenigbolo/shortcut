@@ -8,7 +8,7 @@
 	<p> Weight: <%= cargo.weight %> tonnes </p>
 	<p> Volume: <%= cargo.volume %> m<sup>3</sup></p>
 <% if session[:current_user_class] == "ShipOwner" %>
-	<p><%= link_to "Place bid", controller: "bids", action: "show", id: cargo.id %></p>
+	<button><%= link_to "Place bid", controller: "bids", action: "show", id: cargo.id %></button>
 <% else %>
 	<p>Only Ship owners can bid on cargo</p>
 <% end %>
