@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   #Route to default Homepage
   get '/', to: 'marketplace#index'
 
+  get '/marketplace', to: 'marketplace#show'
+
+  get '/marketplace/cargo/bid', to: 'bids#show'
+
   #Routes from session page
   get '/logout', to: 'sessions#destroy', as: :logout
 
@@ -42,5 +46,10 @@ Rails.application.routes.draw do
 
   #Routes from Cargo Page
   post '/cargo/new', to: 'cargos#new'
+
+  #Routes from profile page
+  get '/cargo-owner/:id/bid', to: 'bids#edit'
+
+  post '/bid/edit/', to: 'bids#create'
 
 end

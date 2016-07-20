@@ -54,3 +54,8 @@ Port.create(name: "Randers")
 Port.create(name: "Skive")
 Port.create(name: "Ålborg")
 Port.create(name: "Århus")
+
+
+Bid.create(cargo_id: "1", description: "Testing seeded data 1", price: 25, end_date: "2016-07-20")
+Bid.create(cargo_id: "2", description: "Testing seeded data 2", price: 27, end_date: "2016-07-20")
+Bid.create(cargo_id: "3", description: "Testing seeded data 3", price: 29, end_date: "2016-07-20")

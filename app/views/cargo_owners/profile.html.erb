@@ -3,3 +3,16 @@
 <% if @user.id = session[:current_user_id] %>
 	<%= link_to "Add Cargo", controller: "cargos", action: "show", id: @user.id %>
 <% end %>
+
+<h5>Cargos</h5>
+<% if @cargo != nil%>
+	<% @cargo.each do |cargo| %>
+		<%= cargo.description %>
+		<br>
+		<%= cargo.arrival_date %>
+		<br>
+		<%= link_to "Auction Cargo", controller: "bids", action: "edit", id: cargo.id %>
+		<br>
+		<br>
+	<% end %>
+<% end %>
