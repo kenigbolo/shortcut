@@ -12,10 +12,10 @@ class BidsController < ApplicationController
 
 		if price != nil
 			Bid.create(cargo_id: cargo_id, description: description, price: price, end_date: end_date)
-			byebug
 			redirect_to controller: :marketplace, action: :show
 		else
 			Bid.create(cargo_id: cargo_id, description: description, price: 0, end_date: end_date)
+			redirect_to controller: :marketplace, action: :show
 		end
 	end
 
@@ -23,4 +23,21 @@ class BidsController < ApplicationController
 		@cargo_id = params[:id]
 		@bid = Bid.find_by cargo_id: @cargo_id
 	end
+
+	def new
+		bid = Bid.find_by id: params[:bid_id]
+		#Change to ship owner later on instead of cargo owner
+		winner = CargoOwner.find_by id: session[:current_user_id]
+		if params[:price] < bid.price
+			bid.price = params[:price].to_i
+			bid.winner = winner.username
+			bid.save
+		else
+			flash[:alert] = "You cannot bid "
+		end
+		
+
+		redirect_to '/marketplace'
+	end
+
 end

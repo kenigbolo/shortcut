@@ -50,6 +50,9 @@ Rails.application.routes.draw do
   #Routes from profile page
   get '/cargo-owner/:id/bid', to: 'bids#edit'
 
-  post '/bid/edit/', to: 'bids#create'
+  post '/bid/edit', to: 'bids#create'
+
+  #Routes from bidding page
+  post '/bid/new', to: 'bids#new'
 
 end

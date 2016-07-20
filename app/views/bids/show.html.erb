@@ -4,15 +4,16 @@
   <div class="col-md-4 col-md-offset-4">
     
     <div class="form-header">
-       <p>Current Winner: <% if @bid.winner != nil %> <%= @bid.winner %> <% else %> ---- <% end %></p>   
+       <p>Current Winner: <% if @bid.winner != nil %> <%= @bid.winner %> <% else %> ---- <% end %></p>
+       <p>Current Bid Amount: <% if @bid.price != nil %> <%= @bid.price %> <% else %> ---- <% end %></p>   
     </div>
     
-    <%= form_tag("/bid/new", method: "post", id: @cargo_id) do %>      
+    <%= form_tag("/bid/new", method: "post") do %>      
 
       <label for="price">Enter Price</label>
       <input type="number" name="price" id="price" placeholder="Default starting price is 0">
       <br>
-
+      <%= hidden_field_tag 'bid_id', @bid.id %>
       <input type="submit" name="commit" value="Bid" data-disable-with="Bid">
     <% end %>
   </div>
