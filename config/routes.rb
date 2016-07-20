@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
   get '/cargo-login', to: 'sessions#cargo_login'
 
-  post '/cargo-login', to: 'sessions#create_cargo'
+  post '/cargo-login', to: 'sessions#login_cargo'
 
-  post '/ship-login', to: 'sessions#create_ship'
+  post '/ship-login', to: 'sessions#login_ship'
 
   # Routes from landing pagee
   get '/cargo-owner', to: 'cargo_owners#show'

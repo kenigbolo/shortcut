@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 		render 'ship-login'
 	end
 
-	def create_cargo
+	def login_cargo
 		username = params[:username]
 		password = params[:password]
 
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 			if @user[0].password_digest == password
 				session[:current_user_id] = @user[0].id
 				@user = @user[0]
-				render 'cargo_owners/profile'
+				redirect_to controller: 'cargo_owners', action: 'profile', id: @user.id
 			else
 				flash[:alert] = "You've entered the wrong password"
 				redirect_to cargo_login_path
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
 	end
 
 
-	def create_ship
+	def login_ship
 		username = params[:username]
 		password = params[:password]
 
@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
 				session[:current_user_id] = @user[0].id
 				session[:current_user_class] = @user.class
 				@user = @user[0]
-				render 'ship_owners/profile'
+				redirect_to controller: 'ship_owners', action: 'profile', id: @user.id
 			else
 				flash[:alert] = "You've entered the wrong password"
 				render 'ship-login'
