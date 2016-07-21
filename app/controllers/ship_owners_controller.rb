@@ -21,7 +21,7 @@ class ShipOwnersController < ApplicationController
 		company_address = params[:company_address]
 		@user = ShipOwner.where("username = ?", username)
 		
-		if @users != nil
+		if @user.empty? != true
 			if @user[0].username == username
 				flash[:alert] = "User already exists"
 				render 'index'

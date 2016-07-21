@@ -19,7 +19,7 @@ class CargoOwnersController < ApplicationController
 		country = params[:country]
 		@user = CargoOwner.where("username = ?", username)
 		
-		if @user != nil
+		if @user.empty? != true
 			if @user[0].username == username
 				flash[:alert] = "User already exists"
 				render 'index'
