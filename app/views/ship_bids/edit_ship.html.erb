@@ -19,15 +19,19 @@
 
       <%= form_tag("/bid/edit_ship/", method: "post") do %>      
 
-        <label for="price">Starting Price</label>
-        <input type="number" name="price" id="price" placeholder="Default starting price is 0">
-        <br>
         <%= hidden_field_tag 'id', @ship_id %>
         <label for="end_date">Bidding Deadline</label>
         <input type="date" name="end_date" id="end_date" required>
         <br>
         <label for="description">Available Space</label>
         <input type="text" name="description" id="description" required>
+        <br>
+        <label for="present_port">Departure Port</label>
+        <%= select_tag 'present_port', options_for_select(@ports.collect{ |port| [port.name, port.name] })%>
+        <br>
+
+        <label for="destination_port">Arrival Ports</label>
+        <%= select_tag 'destination_port', options_for_select(@ports.collect{ |port| [port.name, port.name] })%>
         <br>
         <br>
 

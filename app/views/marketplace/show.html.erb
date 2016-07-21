@@ -4,6 +4,7 @@
 	
 	<!-- Cargo Owners Marketspace -->
 	<div class="col-md-6">
+		<h5>Available Cargos</h5>
 		<% @cargos.each do |cargo| %>
 			<p>Description: <%= cargo.description %> </p>
 			<p> From: <%= cargo.present_port %> </p>
@@ -22,11 +23,11 @@
 
 	<!-- ShipOwners MarketPlace -->
 	<div class="col-md-6">
+		<h5>Available Ships</h5>
 		<% @ships.each do |ship| %>
 			<p> From: <%= ship.present_port %> </p>
 			<p> To: <%= ship.destination_port %> </p>
-			<p> Gross Tonne: <%= ship.gross_tonne %> </p>
-			<p> Dead Weight: <%= ship.dead_weight %> </p>
+			<p> Ship Type: <%= ship.ship_type %> </p>
 			<p> Date of Departure: <%= ship.depature_date %> </p>
 		<% if session[:current_user_class] == "CargoOwner" %>
 			<button><%= link_to "Place bid", controller: "ship_bids", action: "show_ship", id: ship.id %></button>

@@ -46,8 +46,6 @@ Rails.application.routes.draw do
   post '/register/ship-owner', to: 'ship_owners#new'
 
 
-
-
   #Routes from Cargo Page
   post '/cargo/new', to: 'cargos#new'
 

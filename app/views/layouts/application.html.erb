@@ -35,9 +35,17 @@
         <nav class="navigation-menu w-nav-menu" role="navigation">
           <a class="navigation-link w-nav-link" href="/">Home</a>
           <a class="navigation-link w-nav-link" href="/contact">Contact</a>
+          <a class="navigation-link w-nav-link" href="/marketplace">MarketPlace</a>
           <!-- If session is not nil -->
           <% if session[:current_user_id] != nil %>
             <a class="navigation-link w-nav-link" href="/logout">Logout</a>
+            <% if session[:current_user_class] == "ShipOwner" %>
+                <%= link_to "Profile", {controller: "ship_owners", action: "profile", id: session[:current_user_id]}, :class => "navigation-link w-nav-link" %>
+            <%end%>
+
+            <% if session[:current_user_class] == "CargoOwner" %>
+                <%= link_to "Profile", {controller: "cargo_owners", action: "profile", id: session[:current_user_id]}, :class => "navigation-link w-nav-link" %>
+            <%end%>
           <%end%>
           <!-- End of session is not nil -->
         </nav>

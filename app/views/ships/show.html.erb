@@ -30,10 +30,6 @@
         <label for="imo_number">Imo Number</label>
         <input type="number" name="imo_number" id="imo_number" >
         <br>
-        
-        <label for="departure_date">Departure Date</label>
-        <input type="date" name="departure_date" id="departure_date" required>
-        <br>
 
         <label for="ship_type">Ship Type</label>
         <select id="ship_type" name="ship_type">
@@ -43,15 +39,6 @@
           <option > Roll on Roll </option>
           <option > Others </option>
         </select>
-        <br>
-
-        <label for="present_port">Departure Port</label>
-        <%= select_tag 'present_port', options_for_select(@ports.collect{ |port| [port.name, port.name] })%>
-        <br>
-
-        <label for="destination_port">Arrival Ports</label>
-        <%= select_tag 'destination_port', options_for_select(@ports.collect{ |port| [port.name, port.name] })%>
-        <br>
         <br>
 
         <input type="submit" name="commit" value="Add Cargo" data-disable-with="Add Cargo">
