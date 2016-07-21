@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720162811) do
+ActiveRecord::Schema.define(version: 20160721075721) do
 
   create_table "bidders", force: :cascade do |t|
     t.integer  "bid_id"
@@ -74,6 +74,26 @@ ActiveRecord::Schema.define(version: 20160720162811) do
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ship_bidders", force: :cascade do |t|
+    t.integer  "ship_bid_id"
+    t.text     "name"
+    t.text     "category"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["ship_bid_id"], name: "index_ship_bidders_on_ship_bid_id"
+  end
+
+  create_table "ship_bids", force: :cascade do |t|
+    t.integer  "ship_id"
+    t.text     "available_space"
+    t.decimal  "price"
+    t.text     "winner"
+    t.date     "departure_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["ship_id"], name: "index_ship_bids_on_ship_id"
   end
 
   create_table "ship_owners", force: :cascade do |t|

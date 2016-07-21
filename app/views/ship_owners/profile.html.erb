@@ -12,7 +12,7 @@
 		<p> Gross Tonne: <%= ship.gross_tonne %> </p>
 		<p> Dead Weight: <%= ship.dead_weight %> </p>
 		<p> Date of Departure: <%= ship.depature_date %> </p>
-		<button><%= link_to "Auction ship", controller: "bids", action: "edit", id: ship.id %></button>
+		<button><%= link_to "Auction ship", controller: "ship_bids", action: "edit_ship", id: ship.id %></button>
 		<br>
 		<br>
 	<% end %>

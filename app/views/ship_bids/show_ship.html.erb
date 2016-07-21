@@ -1,0 +1,34 @@
+<link rel="stylesheet" type="text/css" href="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/css/kenigbolo-meya-stephen-s-trendy-site.webflow.2dba93c49.css">
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    
+    <div class="form-header">
+       <p>Current Winner: <% if @bid.winner != nil %> <%= @bid.winner %> <% else %> ---- <% end %></p>
+       <p>Current Bid Amount: <% if @bid.price != nil %> <%= @bid.price %> <% else %> ---- <% end %></p>   
+    </div>
+    
+    <%= form_tag("/bid/new_ship", method: "post") do %>      
+
+      <label for="price">Enter Price</label>
+      <input type="number" name="price" id="price" placeholder="Default starting price is 0">
+      <br>
+      <%= hidden_field_tag 'bid_id', @bid.id %>
+      <input type="submit" name="commit" value="Bid" data-disable-with="Bid">
+    <% end %>
+  </div>
+</div>
+  <!-- End of form -->
+
+
+<!-- Beginning of Footer -->
+<footer>
+  <div class="center footer w-section" id="footer">
+    <div class="w-container">
+      <div class="footer-text">Copyright Shortcut Inc 2016</div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/js/webflow.30539563a.js"></script>
+</footer>

@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 		if @user.length > 0
 			if @user[0].password_digest == password
 				session[:current_user_id] = @user[0].id
-				if @user.class == CargoOwner
+				if @user[0].class == CargoOwner
 					session[:current_user_class] = "CargoOwner"
 				end
 				@user = @user[0]
@@ -40,7 +40,7 @@ class SessionsController < ApplicationController
 		if @user.length > 0
 			if @user[0].password_digest == password
 				session[:current_user_id] = @user[0].id
-				if @user.class == ShipOwner
+				if @user[0].class == ShipOwner
 					session[:current_user_class] = "ShipOwner"
 				end
 				@user = @user[0]
@@ -57,6 +57,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 		session[:current_user_id] = nil
+		session[:current_user_class] = nil
 		render 'marketplace/index'
 	end
 

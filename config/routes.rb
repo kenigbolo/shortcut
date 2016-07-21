@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get '/marketplace/cargo/bid', to: 'bids#show'
 
+  get '/marketplace/ship/bid', to: 'ship_bids#show_ship'
+
   #Routes from session page
   get '/logout', to: 'sessions#destroy', as: :logout
 
@@ -56,9 +58,15 @@ Rails.application.routes.draw do
   #Routes from profile page
   get '/cargo-owner/:id/bid', to: 'bids#edit'
 
+  get '/ship-owner/:id/bid', to: 'ship_bids#edit_ship'
+
   post '/bid/edit', to: 'bids#create'
+
+  post '/bid/edit_ship', to: 'ship_bids#create_ship'
 
   #Routes from bidding page
   post '/bid/new', to: 'bids#new'
+
+  post '/bid/new_ship', to: 'ship_bids#new_ship'
 
 end

@@ -9,7 +9,7 @@ class MarketplaceController < ApplicationController
 	end
 
 	def show
-		@cargo = Cargo.all
-
+		@cargos = Cargo.all
+		@ships = Ship.all
 	end
 end

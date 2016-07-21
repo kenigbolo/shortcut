@@ -19,7 +19,7 @@ class ShipOwnersController < ApplicationController
 		country = params[:country]
 		company_name = params[:company_name]
 		company_address = params[:company_address]
-		@user = CargoOwner.where("username = ?", username)
+		@user = ShipOwner.where("username = ?", username)
 		
 		if @users != nil
 			if @user[0].username == username
