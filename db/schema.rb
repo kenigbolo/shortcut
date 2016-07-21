@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20160721075721) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bidders", force: :cascade do |t|
     t.integer  "bid_id"
     t.text     "name"
     t.text     "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bid_id"], name: "index_bidders_on_bid_id"
+    t.index ["bid_id"], name: "index_bidders_on_bid_id", using: :btree
   end
 
   create_table "bids", force: :cascade do |t|
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160721075721) do
     t.date     "end_date"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["cargo_id"], name: "index_bids_on_cargo_id"
+    t.index ["cargo_id"], name: "index_bids_on_cargo_id", using: :btree
   end
 
   create_table "cargo_owners", force: :cascade do |t|
@@ -57,7 +60,7 @@ ActiveRecord::Schema.define(version: 20160721075721) do
     t.string   "status"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["cargo_owner_id"], name: "index_cargos_on_cargo_owner_id"
+    t.index ["cargo_owner_id"], name: "index_cargos_on_cargo_owner_id", using: :btree
   end
 
   create_table "marketplaces", force: :cascade do |t|
@@ -82,7 +85,7 @@ ActiveRecord::Schema.define(version: 20160721075721) do
     t.text     "category"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["ship_bid_id"], name: "index_ship_bidders_on_ship_bid_id"
+    t.index ["ship_bid_id"], name: "index_ship_bidders_on_ship_bid_id", using: :btree
   end
 
   create_table "ship_bids", force: :cascade do |t|
@@ -93,7 +96,7 @@ ActiveRecord::Schema.define(version: 20160721075721) do
     t.date     "departure_date"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["ship_id"], name: "index_ship_bids_on_ship_id"
+    t.index ["ship_id"], name: "index_ship_bids_on_ship_id", using: :btree
   end
 
   create_table "ship_owners", force: :cascade do |t|
@@ -121,7 +124,7 @@ ActiveRecord::Schema.define(version: 20160721075721) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.date     "depature_date"
-    t.index ["ship_owner_id"], name: "index_ships_on_ship_owner_id"
+    t.index ["ship_owner_id"], name: "index_ships_on_ship_owner_id", using: :btree
   end
 
 end
