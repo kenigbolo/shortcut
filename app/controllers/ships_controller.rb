@@ -18,7 +18,7 @@ class ShipsController < ApplicationController
 		if destination != departure
 			if (gross_tonne <= 0) || (dead_weight <= 0)
 				# Enter the appropraite weight/volume
-				flash[:alert] = "That isn't an actuall ship. Enter the proper Gross Tonne and Dead Weight"
+				flash[:alert] = "That isn't an actual ship. Enter the proper Gross Tonne and Dead Weight"
 				render 'show'
 			else
 				if departure_date < Date.today.strftime("%F")

@@ -33,7 +33,7 @@ class CargoOwnersController < ApplicationController
 		else
 			CargoOwner.create(username: username, password_digest: password, first_name: first_name,
 			last_name: last_name, email_address: email, phone_number: phone_number, country: country)
-			flash[:alert] = "Account successfully created. Please login to your account"
+			flash[:notice] = "Account successfully created. Please login to your account"
 			render 'show'
 		end
 	end

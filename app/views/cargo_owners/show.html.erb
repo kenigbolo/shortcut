@@ -1,6 +1,11 @@
 <link rel="stylesheet" type="text/css" href="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/css/kenigbolo-meya-stephen-s-trendy-site.webflow.2dba93c49.css">
 
 <body>
+    <% if flash[:notice] %>
+    	<div class="notice">
+    		<%= flash[:notice] %>
+    	</div>
+  	<% end %>
 	<div class="centered hero-section w-section cen">
 		<div class="w-container" data-ix="new-interaction">
 			<h1 class="hero-heading" data-ix="fade-in-bottom-page-loads">CARGO OWNERS</h1>
