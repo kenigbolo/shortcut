@@ -2,6 +2,13 @@
 
 
 <!-- Beginning of Body -->
+
+<!-- Insert Particles.js -->
+<%= stylesheet_link_tag 'style'%>
+<div id="particles-js"></div>
+<%= javascript_include_tag 'particles', 'app'%>
+<!-- End of Particles.js -->
+
 <% if session[:current_user_id] != nil %>
 <% @ports = Port.all %>
  
