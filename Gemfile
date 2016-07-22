@@ -52,3 +52,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #Add bootstrap to project
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-particles.js'
+end

@@ -4,7 +4,6 @@ class CargosController < ApplicationController
 
 		user = CargoOwner.where("id = ?", params[:id])
 		@user = user[0]
-		@ports = Port.all
 
 		render 'show'
 	end

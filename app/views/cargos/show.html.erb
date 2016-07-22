@@ -3,7 +3,8 @@
 
 <!-- Beginning of Body -->
 <% if session[:current_user_id] != nil %>
-  
+<% @ports = Port.all %>
+ 
   <div class="container">
 
           <!-- <div class="row"> -->

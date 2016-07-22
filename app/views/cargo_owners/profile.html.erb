@@ -1,20 +1,64 @@
-<%= @user.username %>
+<link rel="stylesheet" type="text/css" href="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/css/kenigbolo-meya-stephen-s-trendy-site.webflow.2dba93c49.css">
 
-<% if @user.id = session[:current_user_id] %>
-	<%= link_to "Add Cargo", controller: "cargos", action: "show", id: @user.id %>
-<% end %>
+<!-- Beginning of body -->
+<div class="container">
+	<div class="innerwrap">
+		<section class="section1 clearfix">
+			<div>
+				<div class="row grid clearfix">
+					<div class="col2 first">
+						<img src="<%= asset_path( 'profile-icon.png' ) %>" alt="">
+						<h1> <%= @user.first_name %> </h1>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+						<span>
+							<%= link_to "Add Cargo", controller: "cargos", action: "show", id: @user.id, class: "white-text-link" %>
+						</span>
+					</div>
+					<div class="col2 last">
+						<div class="grid clearfix">
+							<div class="col3 first">
+								<h1>
+									<% if @cargo != nil%>
+										<%= @cargo.length %>
+									<% else %>
+										0
+									<% end %>	
+								</h1>
+								<span>Cargos</span>
+							</div>
+							<div class="col3"><h1>452</h1>
+							<span>Negative Reviews</span></div>
+							<div class="col3 last"><h1>1207</h1>
+							<span>Positive Reviews</span></div>
+						</div>
+					</div>
+				</div>
 
-<h5>Cargos</h5>
-<% if @cargo != nil%>
-	<% @cargo.each do |cargo| %>
-		<%= cargo.description %>
-		<br>
-		<%= cargo.arrival_date %>
-		<br>
-		<%= cargo.id %>
-		<br>
-		<%= link_to "Auction Cargo", controller: "bids", action: "edit", id: cargo.id %>
-		<br>
-		<br>
-	<% end %>
-<% end %>
+			</div>
+			<span class="smalltri">
+				
+			<i class="fa fa-star"></i>
+			</span>
+		</section>
+
+
+		<section class="section2 clearfix">
+			<div class="grid">
+				<% @cargo.each do |cargo| %>
+					<div class="col-md-3 ">
+						<div class="postcont"><img src="<%= asset_path( 'cargo.jpg' ) %>" alt="">
+						</div>
+						<div class="profileinfo">
+							<img src="<%= asset_path( 'profile-icon.png' ) %>" alt="">
+							<p> <%= cargo.description %> </p>
+							<span> <%= link_to "Auction Cargo", controller: "bids", action: "edit", id: cargo.id %> <!-- <i class="fa fa-angle-right"></i> --></span>
+						</div>
+					</div>
+				<% end %>	
+			</div>
+		</section>
+	</div>
+</div>	
+<!-- End of body -->
+
+
