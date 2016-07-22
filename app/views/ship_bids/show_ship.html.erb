@@ -11,7 +11,7 @@
             <div class="panel-body">
 
               <!-- Beginning of form -->
-            <%= form_tag("/bid/new_ship", method: "post") do %>
+              <%= form_tag("/bid/new_ship", method: "post") do %>
                
                <!-- Hidden Bid iD -->
                 <%= hidden_field_tag 'bid_id', @bid.id %>
@@ -35,7 +35,7 @@
 
                 <!-- Place Bid -->
                 <div class="form-group">
-                  <input type="text" name="price" id="price" class="form-control input-sm" placeholder="Enter Bid" required>
+                  <input type="number" name="price" id="price" class="form-control input-sm" placeholder="Enter Bid" required>
                 </div>
                 <!-- End of Place Bid -->
                 
