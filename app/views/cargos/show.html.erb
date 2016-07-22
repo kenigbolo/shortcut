@@ -1,80 +1,117 @@
 <link rel="stylesheet" type="text/css" href="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/css/kenigbolo-meya-stephen-s-trendy-site.webflow.2dba93c49.css">
 
 
+<!-- Beginning of Body -->
 <% if session[:current_user_id] != nil %>
+  
+  <div class="container">
 
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <% if flash[:alert] %>
-      <%= flash[:alert] %>
-    <% end %>
-    <div class="form-header">
-          Add new Cargo
-    </div>
+          <!-- <div class="row"> -->
+            <div class="col-md-4 col-md-offset-4">
+              <div class="sign-up">
+                <% if flash[:alert] %>
+                  <%= flash[:alert] %>
+                <% end %> 
+              </div>
+            </div>
+          <!-- </div> -->
+          
+          <div class="row centered-form">
+          <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">Add New Cargo</h4>
+              </div>
+              <div class="panel-body">
+              <%= form_tag("/cargo/new", method: "post") do %>
+                <!-- Beginning of form -->
+                  <div class="form-group">
+                    <input type="text" name="description" id="description" class="form-control input-sm" placeholder="Description" required>
+                  </div>
+
+                  <!-- Weight and Volume -->
+                  <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="number" name="weight" id="weight" class="form-control input-sm floatlabel" placeholder="Weight" required>
+                      </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="number" name="volume" id="volume" class="form-control input-sm" placeholder="Volume" required>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End of Weight and Volume -->
+
+                  <!-- Cargo Status and Type -->
+                  <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <label for="cargo_type" class="panel-title"><h4 class="panel-title">Cargo Type</h4></label>
+                        <select id="cargo_type" name="cargo_type" class="form-control input-sm floatlabel" required>
+                          <option > Liquid Bulk</option>
+                          <option > Dry Bulk </option>
+                          <option > Containers </option>
+                          <option > Roll on Roll </option>
+                          <option > Others </option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                            <label for="status" class="panel-title"><h4 class="panel-title">Cargo Status</h4></label>
+                            <select id="status" name="status" class="form-control input-sm floatlabel" required>
+                              <option > Available</option>
+                              <option > In Transit </option>
+                              <option > Delivered </option>
+                            </select>
+                        </div>
+                    </div>
+                  </div>
+                  <!-- End of Cargo Status and Type -->
+
+                  <div class="form-group">
+                    <input type="date" name="arrival_date" id="arrival_date" class="form-control input-sm" placeholder="Arrival Date" required>
+                  </div>
+
+                  <!-- Weight and Volume -->
+                  <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <label for="present_port" class="panel-title"><h6 class="panel-title">Departure Port</h6></label>
+                        <%= select_tag 'present_port', options_for_select(@ports.collect{ |port| [port.name, port.name] }), class: "form-control input-sm floatlabel" %>
+                      </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <label for="destination_port" class="panel-title"><h6 class="panel-title">Arrival Port</h6></label>
+                        <%= select_tag 'destination_port', options_for_select(@ports.collect{ |port| [port.name, port.name] }), class: "form-control input-sm floatlabel" %>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End of Weight and Volume -->
+   
+                  <!-- Submit Button -->
+                  <%= submit_tag "Add Cargo", class: "btn btn-info btn-block" %>
+                  <!-- End of Submit Button -->
+
+                <% end %>
+                <!-- End of form -->
+              </div>
+            </div>
+          </div>
+        </div>
   </div>
-</div>
 
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-
-      <%= form_tag("/cargo/new", method: "post") do %>      
-    
-        <label for="weight">Weight</label>
-        <input type="number" name="weight" id="weight" required>
-        <br>
-
-        <label for="volume">Volume</label>
-        <input type="number" name="volume" id="volume" required>
-        <br>
-        
-        <label for="density">Density</label>
-        <input type="number" name="density" id="density" >
-        <br>
-        
-        <label for="arrival_date">Arrival Date</label>
-        <input type="date" name="arrival_date" id="arrival_date" required>
-        <br>
-
-        <label for="status">Cargo Status</label>
-        <select id="status" name="status">
-          <option >Available</option>
-          <option >In Transit</option>
-          <option >Done</option>
-        </select>
-        <br>
-
-        <label for="cargo_type">Cargo Type</label>
-        <select id="cargo_type" name="cargo_type">
-          <option > Liquid Bulk</option>
-          <option > Dry Bulk </option>
-          <option > Containers </option>
-          <option > Roll on Roll </option>
-          <option > Others </option>
-        </select>
-        <br>
-
-        <label for="present_port">Departure Port</label>
-        <%= select_tag 'present_port', options_for_select(@ports.collect{ |port| [port.name, port.name] })%>
-        <br>
-
-        <label for="destination_port">Arrival Ports</label>
-        <%= select_tag 'destination_port', options_for_select(@ports.collect{ |port| [port.name, port.name] })%>
-        <br>
-        
-        <label for="description">Description</label>
-        <input type="text" name="description" id="description" required>
-        <br>
-        <br>
-
-        <input type="submit" name="commit" value="Add Cargo" data-disable-with="Add Cargo">
-      <% end %>
-    </div>
-  </div>
-  <!-- End of form -->
 <% else %>
+
   <h5>You must be logged in to add a cargo</h5>
   <%= link_to "Click to Login", controller: "sessions", action: "cargo_login" %>
+
 <% end %>
+<!-- End of Body -->
 
 <!-- Beginning of Footer -->
   <footer>

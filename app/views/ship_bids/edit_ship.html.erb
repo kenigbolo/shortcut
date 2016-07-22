@@ -1,50 +1,80 @@
 <link rel="stylesheet" type="text/css" href="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/css/kenigbolo-meya-stephen-s-trendy-site.webflow.2dba93c49.css">
 
-
 <% if session[:current_user_id] != nil %>
 
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <% if flash[:alert] %>
-      <%= flash[:alert] %>
-    <% end %>
-    <div class="form-header">
-          Add Ship to Marketplace
-    </div>
+  <div class="container">
+
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+              <div class="sign-up">
+                <% if flash[:alert] %>
+                  <%= flash[:alert] %>
+                <% end %> 
+              </div>
+            </div>
+          </div>
+          
+          <div class="row centered-form">
+          <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">Add ship to MarketPlace</h4>
+              </div>
+              <div class="panel-body">
+              <%= form_tag("/bid/edit_ship/", method: "post") do %>
+                <!-- Beginning of form -->
+                  <div class="form-group">
+                    <label for="end_date"><h6 class="panel-title">Bidding Deadline</h6></label>
+                    <input type="date" name="end_date" id="end_date" class="form-control input-sm" placeholder="Bidding Deadline" required>
+                  </div>
+
+                  <!-- Available space in Tonnes and m3 -->
+                  <div class="row">
+                    <label><h6 class="panel-title">Available Space</h6></label>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="number" name="description" id="description" class="form-control input-sm floatlabel" placeholder="Cubic Meters" required>
+                      </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="number" name="dead_weight" id="dead_weight" class="form-control input-sm" placeholder="Tonnes" required>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End of Available space in Tonnes and m3 -->
+                  
+                  <!-- Hidden Ship ID -->
+                  <%= hidden_field_tag 'id', @ship_id %>  
+                  <!-- End of Hidden Ship ID -->
+
+                  <!-- Beginning of Ports -->
+                  <label for="present_port"><h6 class="panel-title">Departure Port</h6></label>
+                  <%= select_tag 'present_port', options_for_select(@ports.collect{ |port| [port.name, port.name] }), class: "form-control input-sm" %>
+
+                  <label for="destination_port"><h6 class="panel-title">Arrival Port</h6></label>
+                  <%= select_tag 'destination_port', options_for_select(@ports.collect{ |port| [port.name, port.name] }), class: "form-control input-sm" %>
+                  <br>
+                  <!-- End of Ports -->
+
+                  <!-- Submit Button -->
+                  <%= submit_tag "Create Auction", class: "btn btn-info btn-block" %>
+                  <!-- End of Submit Button -->
+                <% end %>
+                <!-- End of form -->
+              </div>
+            </div>
+          </div>
+        </div>
   </div>
-</div>
 
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-
-      <%= form_tag("/bid/edit_ship/", method: "post") do %>      
-
-        <%= hidden_field_tag 'id', @ship_id %>
-        <label for="end_date">Bidding Deadline</label>
-        <input type="date" name="end_date" id="end_date" required>
-        <br>
-        <label for="description">Available Space</label>
-        <input type="text" name="description" id="description" required>
-        <br>
-        <label for="present_port">Departure Port</label>
-        <%= select_tag 'present_port', options_for_select(@ports.collect{ |port| [port.name, port.name] })%>
-        <br>
-
-        <label for="destination_port">Arrival Ports</label>
-        <%= select_tag 'destination_port', options_for_select(@ports.collect{ |port| [port.name, port.name] })%>
-        <br>
-        <br>
-
-        <input type="submit" name="commit" value="Create Auction" data-disable-with="Create Auction">
-      <% end %>
-    </div>
-  </div>
-  <!-- End of form -->
 <% else %>
   <%= flash[:alert] = "You must be logged in to add a bid" %>
   <br>
   <%= link_to "Click to Login", controller: "sessions", action: "cargo_login" %>
 <% end %>
+<!-- End of Test -->
+
 
 <!-- Beginning of Footer -->
   <footer>

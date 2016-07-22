@@ -18,6 +18,7 @@ class ShipBidsController < ApplicationController
 		if present_port != destination_port
 			ship.present_port = present_port
 			ship.destination_port = destination_port
+			ship.depature_date = end_date
 			ship.save
 			
 			ShipBid.create(ship_id: ship_id, available_space: description, departure_date: end_date)
@@ -40,16 +41,28 @@ class ShipBidsController < ApplicationController
 
 	def new_ship
 		bid = ShipBid.find_by id: params[:bid_id]
+
+		price = BigDecimal.new(params[:price])
 		
 		bidder = CargoOwner.find_by id: session[:current_user_id]
-		ShipBidder.create(name: bidder.username, category: session[:current_user_class], ship_bid_id: params[:bid_id])
 
-		if params[:price].to_i < bid.price
-			bid.price = params[:price].to_i
+		ship_bidder = ShipBidder.find_by name: bidder.username
+		
+		if ship_bidder == nil
+			ShipBidder.create(name: bidder.username, category: session[:current_user_class], ship_bid_id: params[:bid_id])
+		end
+
+		if bid.price == nil
+			bid.price = price
 			bid.winner = bidder.username
 			bid.save
+		else
+			if price < bid.price
+				bid.price = price
+				bid.winner = bidder.username
+				bid.save
+			end
 		end
-		
 
 		redirect_to '/marketplace'
 	end

@@ -15,25 +15,16 @@ class ShipsController < ApplicationController
 		ship_type = params[:ship_type]
 		ship_owner_id = session[:current_user_id]
 
-		if destination != departure
-			if (gross_tonne <= 0) || (dead_weight <= 0)
-				# Enter the appropraite weight/volume
-				flash[:alert] = "That isn't an actual ship. Enter the proper Gross Tonne and Dead Weight"
-				render 'show'
-			else
-				if departure_date < Date.today.strftime("%F")
-					# Cannot have the auction date the same as the current date
-					flash[:alert] = "Departure date can only be today or a date in the future date"
-					render 'show'
-				else
-					Ship.create(gross_tonne: gross_tonne, dead_weight: dead_weight, imo_number: imo_number, 
-						ship_type: ship_type, ship_owner_id: ship_owner_id)
-					flash[:alert] = "Ship has been succesfully added"
+		if (gross_tonne <= 0) || (dead_weight <= 0)
+			# Enter the appropraite weight/volume
+			flash[:alert] = "That isn't an actual ship. Enter the proper Gross Tonne and Dead Weight"
+			render 'show'
+		else
+			Ship.create(gross_tonne: gross_tonne, dead_weight: dead_weight, imo_number: imo_number, 
+				ship_type: ship_type, ship_owner_id: ship_owner_id)
+			flash[:alert] = "Ship has been succesfully added"
 
-					redirect_to controller: :ship_owners, action: :profile, id: ship_owner_id
-				end
-			end
-		
+			redirect_to controller: :ship_owners, action: :profile, id: ship_owner_id
 		end
 	end
 end
