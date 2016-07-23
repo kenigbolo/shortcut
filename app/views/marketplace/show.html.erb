@@ -33,7 +33,12 @@
 						<% if cargo.present_port != nil %>
 							<div class="col-md-2 white-bg">
 							<% if cargo.cargo_type == "Liquid Bulk" %>
-								<div class="postcont"><img src="<%= asset_path( 'cargo.jpg' ) %>" alt="" class="bid-detail">
+								<div class="postcont">
+									<img src="<%= asset_path( 'cargo.jpg' ) %>" alt="" class="bid-detail">
+								</div>
+							<% else %>
+								<div class="postcont">
+									<img src="<%= asset_path( 'cargo1.jpg' ) %>" alt="" class="bid-detail">
 								</div>
 							<% end %>
 								<div class="profileinfo panel-body">
