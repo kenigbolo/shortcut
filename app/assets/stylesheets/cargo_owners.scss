@@ -75,6 +75,7 @@ label {
   margin:0px;
   padding:0px;
 }
+
 *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box; box-sizing: border-box; }
 
 .clearfix:before, .clearfix:after { display: table; content: ''; }
@@ -268,7 +269,7 @@ section.section2 {
     padding: 0 10px 30px;
     color: #555;
     font-size: 14px;
-    line-height: 25px;
+    line-height: 13px;
 }
 .section2 .profileinfo img {
     border-radius: 50%;
