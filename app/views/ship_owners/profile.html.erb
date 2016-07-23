@@ -15,3 +15,66 @@
 		<br>
 	<% end %>
 <% end %>
+
+<link rel="stylesheet" type="text/css" href="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/css/kenigbolo-meya-stephen-s-trendy-site.webflow.2dba93c49.css">
+
+	<div class="container">
+		<div class="innerwrap">
+			<section class="section1 clearfix">
+				<div>
+					<div class="row grid clearfix">
+						<div class="col2 first">
+							<img src="<%= asset_path( 'profile-icon.png' ) %>" alt="">
+							<h1> <%= @user.first_name %> </h1>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+							<span>
+								<%= link_to "Add Ship", controller: "ships", action: "show", id: @user.id, class: "white-text-link" %>
+							</span>
+						</div>
+						<div class="col2 last">
+							<div class="grid clearfix">
+								<div class="col3 first">
+									<h1>
+										<% if @ships != nil%>
+											<%= @ships.length %>
+										<% else %>
+											0
+										<% end %>	
+									</h1>
+									<span>Ships</span>
+								</div>
+								<div class="col3"><h1>21</h1>
+								<span>Negative Reviews</span></div>
+								<div class="col3 last"><h1>207</h1>
+								<span>Positive Reviews</span></div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<span class="smalltri">
+					
+				<i class="fa fa-star"></i>
+				</span>
+			</section>
+
+
+			<section class="section2 clearfix">
+				<div class="grid">
+					<% @ships.each do |ship| %>
+						<div class="col-md-3 ">
+							<div class="postcont"><img src="<%= asset_path( 'ship.jpg' ) %>" alt="">
+							</div>
+							<div class="profileinfo panel-body">
+								<img src="<%= asset_path( 'profile-icon.png' ) %>" alt="">
+								<p>Ship Type: <%= ship.ship_type %> </p>
+								<p>IMO Number: <%= ship.imo_number %> </p>
+								<button class="btn btn-info btn-block"><%= link_to "Auction ship", controller: "ship_bids", action: "edit_ship", id: ship.id %></button>
+							</div>
+						</div>
+					<% end %>	
+				</div>
+			</section>
+		</div>
+	</div>	
+<!-- End of body -->

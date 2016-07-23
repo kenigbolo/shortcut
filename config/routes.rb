@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   #Route to default Homepage
   get '/', to: 'marketplace#index'
 
+  get '/contact', to: 'marketplace#contact'
+
   get '/marketplace', to: 'marketplace#show'
 
   get '/marketplace/cargo/bid', to: 'bids#show'

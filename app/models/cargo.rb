@@ -1,5 +1,5 @@
 class Cargo < ApplicationRecord
 
 	belongs_to :cargo_owner
-	has_many :bids
+	has_one :bid
 end

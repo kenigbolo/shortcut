@@ -47,10 +47,11 @@
 						<div class="col-md-3 ">
 							<div class="postcont"><img src="<%= asset_path( 'cargo.jpg' ) %>" alt="">
 							</div>
-							<div class="profileinfo">
+							<div class="profileinfo panel-body">
 								<img src="<%= asset_path( 'profile-icon.png' ) %>" alt="">
-								<p> <%= cargo.description %> </p>
-								<span> <%= link_to "Auction Cargo", controller: "bids", action: "edit", id: cargo.id %> <!-- <i class="fa fa-angle-right"></i> --></span>
+								<p>Cargo Type: <%= cargo.cargo_type %> </p>
+								<p>Description: <%= cargo.description %> </p>
+								<button class="btn btn-info btn-block"><%= link_to "Auction Cargo", controller: "bids", action: "edit", id: cargo.id %></button>
 							</div>
 						</div>
 					<% end %>	

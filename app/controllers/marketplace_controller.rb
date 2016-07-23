@@ -12,4 +12,8 @@ class MarketplaceController < ApplicationController
 		@cargos = Cargo.all
 		@ships = Ship.all
 	end
+
+	def contact
+
+	end
 end
