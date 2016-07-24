@@ -17,6 +17,11 @@ class BidsController < ApplicationController
 	def show
 		@cargo_id = params[:id]
 		@bid = Bid.find_by cargo_id: @cargo_id
+
+		time = @bid.end_date.strftime("%Y-%m-%d").split("-").map{ |time| time.to_i }
+		time = DateTime.new(time[0], time[1], time[2])
+		@time = Time.parse(time.to_s).to_f * 1000
+
 	end
 
 

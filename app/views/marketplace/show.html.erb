@@ -62,35 +62,38 @@
 				</div>
 			</section>
 
-		<% elsif @filter == "Ship" %>
+		<% else %>
 
-			<section class="section2 clearfix">
-				<div class="grid">
-					<% @ships.each do |ship| %>
-						<% if ship.present_port != nil %>
-							<div class="col-md-2 white-bg">
-								<div class="postcont"><img src="<%= asset_path( 'ship1.jpg' ) %>" alt="" class="bid-detail">
+			<%if @filter == "Ship" %>
+
+				<section class="section2 clearfix">
+					<div class="grid">
+						<% @ships.each do |ship| %>
+							<% if ship.present_port != nil %>
+								<div class="col-md-2 white-bg">
+									<div class="postcont"><img src="<%= asset_path( 'ship1.jpg' ) %>" alt="" class="bid-detail">
+									</div>
+									<div class="profileinfo panel-body">
+										<img src="<%= asset_path( 'profile-icon.png' ) %>" alt="">
+										
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item">Class: <%= @filter %></li>
+										    <li class="list-group-item">Type: <%= ship.ship_type %></li>
+										    <li class="list-group-item">From: <%= ship.present_port %></li>
+										    <li class="list-group-item">To: <%= ship.destination_port %></li>
+										</ul>
+										<% if session[:current_user_class] == "CargoOwner" %>
+											<button class="btn btn-info btn-block"><%= link_to "Place Bid", controller: "ship_bids", action: "show_ship", id: ship.id %></button>
+										<% else %>
+											<button class="btn btn-info btn-block">Cargo Owners Only</button>
+										<% end %>
+									</div>
 								</div>
-								<div class="profileinfo panel-body">
-									<img src="<%= asset_path( 'profile-icon.png' ) %>" alt="">
-									
-									<ul class="list-group list-group-flush">
-										<li class="list-group-item">Class: <%= @filter %></li>
-									    <li class="list-group-item">Type: <%= ship.ship_type %></li>
-									    <li class="list-group-item">From: <%= ship.present_port %></li>
-									    <li class="list-group-item">To: <%= ship.destination_port %></li>
-									</ul>
-									<% if session[:current_user_class] == "CargoOwner" %>
-										<button class="btn btn-info btn-block"><%= link_to "Place Bid", controller: "ship_bids", action: "show_ship", id: ship.id %></button>
-									<% else %>
-										<button class="btn btn-info btn-block">Cargo Owners Only</button>
-									<% end %>
-								</div>
-							</div>
-						<% end %>
-					<% end %>	
-				</div>
-			</section>
+							<% end %>
+						<% end %>	
+					</div>
+				</section>
+			<% end %>
 		<% end %>
 	</div>
 </div>
