@@ -5,9 +5,9 @@
 <div id="particles-js"></div>
 <%= javascript_include_tag 'particles', 'app'%>
 <!-- End of Particles.js -->
-
+<% time = @time %>
 <script type="text/javascript">
-    var deadline = new Date(<%= @time %>);
+    var deadline = new Date(<%= time %>);
     initializeClock('clockdiv', deadline);
 </script>
 
