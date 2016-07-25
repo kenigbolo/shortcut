@@ -165,8 +165,9 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 .section1 .col2.first h1 {
     font-weight: normal;
     margin-bottom: 10px;
-  margin-top: 15px;
-  text-transform: capitalize;
+    margin-top: 15px;
+    text-transform: capitalize;
+    text-align: left;
 }
 .section1 .col2.first p {
   font-size: 14px;
@@ -362,4 +363,46 @@ section.section2 {
     font-size: 18px;
   }
   
+}
+
+
+// Ratings styling
+ .rating {
+    float:left;
+    border:none;
+}
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0, 0, 0, 0);
+}
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+}
+.rating:not(:checked) > label:before {
+    content:'★ ';
+}
+.rating > input:checked ~ label {
+    color: #f70;
+}
+.rating:not(:checked) > label:hover, .rating:not(:checked) > label:hover ~ label {
+    color: gold;
+}
+.rating > input:checked + label:hover, .rating > input:checked + label:hover ~ label, .rating > input:checked ~ label:hover, .rating > input:checked ~ label:hover ~ label, .rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+}
+.rating > label:active {
+    position:relative;
+}
+
+.rating-button {
+  background-color: #6AAFEA !important;
 }
