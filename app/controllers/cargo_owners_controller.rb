@@ -48,4 +48,8 @@ class CargoOwnersController < ApplicationController
 			render 'profile'
 		end
 	end
+
+	def rating
+
+	end
 end

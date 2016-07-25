@@ -66,6 +66,10 @@ Rails.application.routes.draw do
 
   post '/bid/edit_ship', to: 'ship_bids#create_ship'
 
+  post '/cargo-rating/new', to:  'cargo_owners#rating'
+
+  post '/ship-rating/new', to:  'ship_owners#rating'
+
   #Routes from bidding page
   post '/bid/new', to: 'bids#new'
 

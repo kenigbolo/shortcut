@@ -14,33 +14,42 @@
 							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
 							
 							<!-- Ratings Form -->
-							<form class="ratings-form">
-								<div class="col2 second">
-									<fieldset class="rating">
-									    <input type="radio" id="star5" name="rating" value="5" />
-									    <label for="star5">5 stars</label>
-									    <input type="radio" id="star4" name="rating" value="4" />
-									    <label for="star4">4 stars</label>
-									    <input type="radio" id="star3" name="rating" value="3" />
-									    <label for="star3">3 stars</label>
-									    <input type="radio" id="star2" name="rating" value="2" />
-									    <label for="star2">2 stars</label>
-									    <input type="radio" id="star1" name="rating" value="1" />
-									    <label for="star1">1 star</label>
-									</fieldset>
-								
+							<%= form_tag("/cargo-rating/new", method: "post") do %>
+								<form class="ratings-form">
+									<div class="col2 second">
+										<fieldset class="rating">
+										    <input type="radio" id="star5" name="rating" value="5" />
+										    <label for="star5">5 stars</label>
+										    <input type="radio" id="star4" name="rating" value="4" />
+										    <label for="star4">4 stars</label>
+										    <input type="radio" id="star3" name="rating" value="3" />
+										    <label for="star3">3 stars</label>
+										    <input type="radio" id="star2" name="rating" value="2" />
+										    <label for="star2">2 stars</label>
+										    <input type="radio" id="star1" name="rating" value="1" />
+										    <label for="star1">1 star</label>
+										</fieldset>
+									
 
-									<button class="btn btn-primary rating-button">
-										Rate
-									</button>
-								</div>
-							</form>
+										<button class="btn btn-primary rating-button">
+											Rate
+										</button>
+									</div>
+								</form>
+							<% end %>
 							<!-- End of Ratings form -->
-							
-							<span>
-								<%= link_to "Add Cargo", controller: "cargos", action: "show", id: @user.id, class: "white-text-link" %>
-							</span>
+								
+							<!-- Add ship Link -->
+							<% if session[:current_user_class] == "CargoOwner" %>
+								<% if session[:current_user_id] == @user.id %>
+									<span>
+										<%= link_to "Add Cargo", controller: "cargos", action: "show", id: @user.id, class: "white-text-link" %>
+									</span>
+								<% end %>
+							<% end %>
+							<!-- End of Add Ship Link -->
 						</div>
+
 						<div class="col2 last">
 							<div class="grid clearfix">
 								<div class="col3 first">
