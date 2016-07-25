@@ -1,5 +1,8 @@
 <link rel="stylesheet" type="text/css" href="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/css/kenigbolo-meya-stephen-s-trendy-site.webflow.2dba93c49.css">
 
+<script type="text/javascript">
+	document.getElementById("starhalf").disabled = true;
+</script>
 	<div class="container">
 		<div class="innerwrap">
 			<section class="section1 clearfix">
@@ -25,11 +28,8 @@
 									    <input type="radio" id="star1" name="rating" value="1" />
 									    <label for="star1">1 star</label>
 									</fieldset>
-								</div>
-								<div class="col2 third">
-<!-- 									<fieldset>
-									    <button type="submit" class="white-text-link"> Rate </button>
-									</fieldset> -->
+								
+
 									<button class="btn btn-primary rating-button">
 										Rate
 									</button>
@@ -53,9 +53,9 @@
 									</h1>
 									<span>Cargos</span>
 								</div>
-								<div class="col3"><h1>452</h1>
+								<div class="col3"><h1>120</h1>
 								<span>Negative Reviews</span></div>
-								<div class="col3 last"><h1>1207</h1>
+								<div class="col3 last"><h1>452</h1>
 								<span>Positive Reviews</span></div>
 							</div>
 						</div>
@@ -75,7 +75,7 @@
 						<div class="col-md-3 ">
 							<div class="postcont"><img src="<%= asset_path( 'cargo.jpg' ) %>" alt="">
 							</div>
-							<div class="profileinfo panel-body">
+							<div class="profileinfo panel-body white-bg">
 								<img src="<%= asset_path( 'profile-icon.png' ) %>" alt="">
 								<p>Cargo Type: <%= cargo.cargo_type %> </p>
 								<p>Description: <%= cargo.description %> </p>
