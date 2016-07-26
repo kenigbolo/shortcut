@@ -174,7 +174,6 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.0)
   rails-assets-particles.js!
-  rake
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
