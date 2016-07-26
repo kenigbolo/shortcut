@@ -2,11 +2,6 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require_relative 'config/application'
-require "bundler/gem_tasks"
-require 'rspec/core/rake_task'
+
 
 Rails.application.load_tasks
-
-RSpec::Core::RakeTask.new
-
-task :default => :spec
