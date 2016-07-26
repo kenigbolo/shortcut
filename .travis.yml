@@ -7,10 +7,8 @@ env:
     – DB=sqlite
     – DB=postgresq
 
-postgres:
-  adapter: postgresql
-  database: my_database_test
-  username: postgres
+services:
+  – postgresql
 
 before_script:
   – psql -c ‘create database my_database_test;’ -U postgres
