@@ -82,4 +82,13 @@ class ShipOwnersController < ApplicationController
 		redirect_to action: 'profile', id: ship_owner
 	end
 
+	def create_message
+		@cargo_owner = CargoOwner.where("id = ?", params[:cargo_owner])
+		@ship_owner = ShipOwner.where("id = ?", params[:id])
+	end
+
+	def save_message
+
+	end
+
 end
