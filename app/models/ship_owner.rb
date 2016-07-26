@@ -2,5 +2,5 @@ class ShipOwner < ApplicationRecord
 	
 	has_secure_password
 	has_many :ships
-	has_many :ratings
+	has_one :ship_owner_rating
 end
