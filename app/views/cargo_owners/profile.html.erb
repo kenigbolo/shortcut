@@ -1,5 +1,7 @@
 <link rel="stylesheet" type="text/css" href="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/css/kenigbolo-meya-stephen-s-trendy-site.webflow.2dba93c49.css">
 
+
+
 <script type="text/javascript">
 	document.getElementById("ratings").disabled = true;
 </script>
@@ -81,19 +83,13 @@
 										
 											<fieldset class="rating ratings">									
 												<% @rating.rating.to_i.times do%>
-													<input type="radio" id="star5" name="rating" value="5" />
-												    <label for="star">stars</label>
+													<i class="glyphicon glyphicon-star"></i>
 												<% end %>
 											</fieldset>
 											
 											<% if @half == true  %>
 												<i class="glyphicon glyphicon-star half"></i>
 											<% end %>
-										
-										
-										
-											<!-- <span>Rating</span> -->
-										
 									<%else%>
 										<fieldset class="rating ratings">									
 											<% 5.times do %>
@@ -109,10 +105,6 @@
 					</div>
 
 				</div>
-				<span class="smalltri">
-					
-				<i class="fa fa-star"></i>
-				</span>
 			</section>
 
 

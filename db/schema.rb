@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726091118) do
+ActiveRecord::Schema.define(version: 20160726151106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,18 @@ ActiveRecord::Schema.define(version: 20160726091118) do
   create_table "marketplaces", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "ship_owner_id"
+    t.integer  "cargo_owner_id"
+    t.text     "from"
+    t.text     "subject"
+    t.text     "content"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["cargo_owner_id"], name: "index_messages_on_cargo_owner_id", using: :btree
+    t.index ["ship_owner_id"], name: "index_messages_on_ship_owner_id", using: :btree
   end
 
   create_table "ports", force: :cascade do |t|
