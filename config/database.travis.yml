@@ -1,12 +1,8 @@
-sqlite: &sqlite
-  adapter: sqlite3
-  database: db/<%= Rails.env %>.sqlite3
-
 postgresql: &postgresql
   adapter: postgresql
   username: postgres
   password:
-  database: strano_<%= Rails.env %>
+  database: my_database_<%= Rails.env %>
   min_messages: ERROR
 
 defaults: &defaults
