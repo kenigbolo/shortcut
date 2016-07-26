@@ -20,14 +20,11 @@ services:
   - postgresql
 
 script:
-  - bundle exec rake railties:install:migrations FROM=engine_name
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rake
-  - pushd engines/engine_name && bundle exec rake test && popd
 
 before_script:
   - cp config/database.travis.yml config/database.yml
-  - cp config/database.travis.yml engines/engine_name/test/dummy/config/database.yml
   - psql -c ‘create database my_database_test;’ -U postgres
 
