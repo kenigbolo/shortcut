@@ -48,10 +48,38 @@ class ShipOwnersController < ApplicationController
 		if user[0] != nil
 			@user = user[0]
 			@ships = Ship.where("ship_owner_id = ?", user_id)
+			@rating = ShipOwnerRating.find_by ship_owner_id: user_id
+			@half = false
+
+			if @rating != nil
+				if (@rating.rating) > (@rating.rating.to_i + 0.4)
+					@half = true
+				end
+			end
 			render 'profile'
 		else
 			@invalid = "No user with such profile"
 			render 'profile'
 		end
 	end
+
+	def rating
+		user_rating = params[:rating].to_i
+		ship_owner = params[:ship_owner]
+
+		# so_rating refers to Ship Owner Rating
+		so_rating = ShipOwnerRating.find_by ship_owner_id: ship_owner
+
+		if so_rating != nil
+			so_rating.total += user_rating
+			so_rating.count += 1
+			so_rating.rating = so_rating.total / so_rating.count
+			so_rating.save
+		else
+			ShipOwnerRating.create(total: user_rating, count: 1, rating: user_rating, ship_owner_id: ship_owner)
+		end
+
+		redirect_to action: 'profile', id: ship_owner
+	end
+
 end

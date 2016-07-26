@@ -65,7 +65,6 @@ class CargoOwnersController < ApplicationController
 	def rating
 		user_rating = params[:rating].to_i
 		cargo_owner = params[:cargo_owner]
-		ship_owner = params[:ship_owner]
 
 		# co_rating refers to Cargo Owner Rating
 		co_rating = Rating.find_by cargo_owner_id: cargo_owner
