@@ -1,4 +1,6 @@
 language: ruby
+sudo: true
+
 rvm:
   - 2.3.1
 
@@ -7,14 +9,13 @@ env:
     – DB=sqlite
     – DB=postgresq
 
-sudo: true
-
 branches:
     only:
         - master
 
 services:
   - postgresql
+  - redis-server
 
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
