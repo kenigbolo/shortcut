@@ -1,0 +1,2 @@
+class ShipOwnerRating < ApplicationRecord
+end
