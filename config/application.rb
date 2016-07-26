@@ -13,3 +13,5 @@ module Shortcut
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+config.paths['db/migrate'] = EngineName::Engine.paths['db/migrate'].existent
