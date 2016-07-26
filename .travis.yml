@@ -3,10 +3,12 @@ rvm:
   - 2.3.1-p112
 
 env:
-– DB=postgresql
+  matrix:
+    – DB=sqlite
+    – DB=postgresq
 
 before_script:
-– psql -c ‘create database my_database_test;’ -U postgres
+  – psql -c ‘create database my_database_test;’ -U postgres
 
 script:
-– RAILS_ENV=test bundle exec rake –trace db:migrate spec
+  – RAILS_ENV=test bundle exec rake –trace db:migrate spec
