@@ -12,7 +12,7 @@ branches:
     only:
         - master
 
-bundler_args: --without development
+bundler_args: --without production
 
 cache: bundler
 
