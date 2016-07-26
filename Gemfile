@@ -57,3 +57,7 @@ gem 'autoprefixer-rails'
 source 'https://rails-assets.org' do
   gem 'rails-assets-particles.js'
 end
+
+group :test do
+  gem 'rake'
+end
