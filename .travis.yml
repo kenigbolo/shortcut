@@ -3,7 +3,6 @@ rvm:
   - 2.3.1-p112
 
 env:
-– DB=sqlite
 – DB=postgresql
 
 before_script:
