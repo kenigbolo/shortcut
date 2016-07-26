@@ -91,13 +91,13 @@ class CargoOwnersController < ApplicationController
 	def save_message
 		subject = params[:subject]
 		content = params[:content]
-		ship_owner = params[:ship_owner]
-		from = ShipOwner.find_by id: ship_owner
+		from = ShipOwner.find_by id: params[:ship_owner]
+		to = CargoOwner.find_by id: params[:id]
 		
 
-		Message.create(subject: subject, content: content, from: from.first_name, 
-			ship_owner_id: ship_owner, cargo_owner_id: params[:id])
+		Message.create(subject: subject, content: content, from: from.username, to: to.username)
 
 		redirect_to action: 'profile', id: params[:id]
 	end
 end
+
