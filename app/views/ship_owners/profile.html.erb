@@ -1,5 +1,10 @@
 <link rel="stylesheet" type="text/css" href="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/css/kenigbolo-meya-stephen-s-trendy-site.webflow.2dba93c49.css">
 
+<script type="text/javascript">
+	document.getElementById("ratings").disabled = true;
+</script>
+
+<% if @invalid == nil %>
 	<div class="container">
 		<div class="innerwrap">
 			<section class="section1 clearfix">
@@ -10,33 +15,37 @@
 							<h1> <%= @user.first_name %> </h1>
 							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
 
-
-							<!-- Ratings Form -->
-							<%= form_tag("/ship-rating/new", method: "post") do %>
-								<form class="ratings-form">
-									<div class="col2 second">
-										<fieldset class="rating">
-										    <input type="radio" id="star5" name="rating" value="5" />
-										    <label for="star5">5 stars</label>
-										    <input type="radio" id="star4" name="rating" value="4" />
-										    <label for="star4">4 stars</label>
-										    <input type="radio" id="star3" name="rating" value="3" />
-										    <label for="star3">3 stars</label>
-										    <input type="radio" id="star2" name="rating" value="2" />
-										    <label for="star2">2 stars</label>
-										    <input type="radio" id="star1" name="rating" value="1" />
-										    <label for="star1">1 star</label>
-										</fieldset>
-									
-
-										<button class="btn btn-primary rating-button">
-											Rate
-										</button>
-									</div>
-								</form>
+							<% if session[:current_user_class] == "CargoOwner" %>
+								<!-- Ratings Form -->
+								<%= form_tag("/ship-rating/new", method: "post") do %>
+									<form class="ratings-form">
+										<div class="col2 second">
+											<fieldset class="rating">
+											    <input type="radio" id="star5" name="rating" value="5" />
+											    <label for="star5">5 stars</label>
+											    <input type="radio" id="star4" name="rating" value="4" />
+											    <label for="star4">4 stars</label>
+											    <input type="radio" id="star3" name="rating" value="3" />
+											    <label for="star3">3 stars</label>
+											    <input type="radio" id="star2" name="rating" value="2" />
+											    <label for="star2">2 stars</label>
+											    <input type="radio" id="star1" name="rating" value="1" />
+											    <label for="star1">1 star</label>
+											</fieldset>
+											
+											<%= hidden_field_tag 'ship_owner', @user.id %>
+											
+											<button class="btn btn-primary rating-button" type="submit">
+												Rate
+											</button>
+											
+										</div>
+									</form>
+								<% end %>
 							<% end %>
-							<!-- End of Ratings form -->
+								<!-- End of Ratings form -->
 							
+
 							<!-- Add ship Link -->
 							<% if session[:current_user_class] == "ShipOwner" %>
 								<% if session[:current_user_id] == @user.id %>
@@ -50,6 +59,7 @@
 
 						<div class="col2 last">
 							<div class="grid clearfix">
+
 								<div class="col3 first">
 									<h1>
 										<% if @ships != nil%>
@@ -60,10 +70,38 @@
 									</h1>
 									<span>Ships</span>
 								</div>
-								<div class="col3"><h1>21</h1>
-								<span>Negative Reviews</span></div>
-								<div class="col3 last"><h1>207</h1>
-								<span>Positive Reviews</span></div>
+
+								<div class="col3">
+									<h1>21</h1>
+									<span>Reviews</span>
+								</div>
+
+								<div class="col3 last">									
+									<% if @rating != nil %>
+										
+											<fieldset class="rating ratings">									
+												<% @rating.rating.to_i.times do%>
+													<input type="radio" id="star5" name="rating" value="5" />
+												    <label for="star">stars</label>
+												<% end %>
+											</fieldset>
+											
+											<% if @half == true  %>
+												<i class="glyphicon glyphicon-star half"></i>
+											<% end %>
+																								
+											<!-- <span>Rating</span> -->
+										
+									<%else%>
+										<fieldset class="rating ratings">									
+											<% 5.times do %>
+												<input type="radio" id="star5" name="rating" value="5" />
+											    <label for="star">stars</label>
+											<% end %>
+										</fieldset>
+										<span>Rating</span>
+									<% end %>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -79,10 +117,10 @@
 			<section class="section2 clearfix">
 				<div class="grid">
 					<% @ships.each do |ship| %>
-						<div class="col-md-3 white-bg">
+						<div class="col-md-3 ">
 							<div class="postcont"><img src="<%= asset_path( 'ship.jpg' ) %>" alt="">
 							</div>
-							<div class="profileinfo panel-body">
+							<div class="profileinfo panel-body white-bg">
 								<img src="<%= asset_path( 'profile-icon.png' ) %>" alt="">
 								<p>Ship Type: <%= ship.ship_type %> </p>
 								<p>IMO Number: <%= ship.imo_number %> </p>
@@ -93,5 +131,14 @@
 				</div>
 			</section>
 		</div>
-	</div>	
+	</div>
+<% else %>	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<%= @invalid %>
+			</div>
+		</div>
+	</div>
+<% end %>	
 <!-- End of body -->

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725141819) do
+ActiveRecord::Schema.define(version: 20160725181419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(version: 20160725141819) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer  "ship_owner_id"
     t.integer  "cargo_owner_id"
     t.decimal  "total"
     t.integer  "count"
@@ -83,7 +82,6 @@ ActiveRecord::Schema.define(version: 20160725141819) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["cargo_owner_id"], name: "index_ratings_on_cargo_owner_id", using: :btree
-    t.index ["ship_owner_id"], name: "index_ratings_on_ship_owner_id", using: :btree
   end
 
   create_table "sessions", force: :cascade do |t|

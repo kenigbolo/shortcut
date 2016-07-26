@@ -45,9 +45,12 @@ class ShipOwnersController < ApplicationController
 		user_id = params[:id]
 		user = ShipOwner.where("id = ?", user_id)
 
-		if user != nil
+		if user[0] != nil
 			@user = user[0]
 			@ships = Ship.where("ship_owner_id = ?", user_id)
+			render 'profile'
+		else
+			@invalid = "No user with such profile"
 			render 'profile'
 		end
 	end
