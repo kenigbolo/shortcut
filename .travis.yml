@@ -20,5 +20,5 @@ script:
   - bundle exec rake
 
 before_script:
-  – cp config/database.travis.yml config/database.yml
-  – psql -c ‘create database my_database_test;’ -U postgres
+  - cp config/database.travis.yml config/database.yml
+  - psql -c ‘create database my_database_test;’ -U postgres
