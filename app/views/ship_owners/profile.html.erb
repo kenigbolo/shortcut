@@ -56,7 +56,7 @@
 								<% end %>
 							<% else %>
 								<span>
-									<%= link_to "Send Message", controller: "ship_owners", action: "create_message", class: "white-text-link", ship_owner: session[:current_user_id] %>
+									<%= link_to "Send Message", controller: "ship_owners", action: "create_message", class: "white-text-link", cargo_owner: session[:current_user_id] %>
 								</span>								
 							<% end %>
 							<!-- End of Add Ship Link -->
