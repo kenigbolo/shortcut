@@ -28,6 +28,6 @@ script:
 
 before_script:
   - cp config/database.travis.yml config/database.yml
-  - cp config/database.yml.travis engines/engine_name/test/dummy/config/database.yml
+  - cp config/database.travis.yml engines/engine_name/test/dummy/config/database.yml
   - psql -c ‘create database my_database_test;’ -U postgres
 
