@@ -14,4 +14,3 @@ module Shortcut
   end
 end
 
-config.paths['db/migrate'] = EngineName::Engine.paths['db/migrate'].existent

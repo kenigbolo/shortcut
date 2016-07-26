@@ -19,8 +19,9 @@ development:
 test:
   <<: *default
   database: my_database_test
-
+  username: postgres
 
 production:
   <<: *default
   database: my_database_production
+  username: postgres

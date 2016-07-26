@@ -1,5 +1,2 @@
-test:
-  adapter: postgresql
-  database: my_database_test
-  host: localhost
-  username: postgres
+
+  
