@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   get '/cargo-owner/:id/message', to: 'cargo_owners#create_message'
 
-  post '/cargo-owner/:id/message', to: 'cargo_owners#save_message'
+  post '/cargo-owner/message', to: 'cargo_owners#save_message'
 
   get 'cargo-owner/add-cargo/:id', to: 'cargos#show'
 
@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 
   get '/ship-owner/:id/message', to: 'ship_owners#create_message'
 
-  post '/ship-owner/:id/message', to: 'ship_owners#save_message'
+  post '/ship-owner/message', to: 'ship_owners#save_message'
 
   post '/register/ship-owner', to: 'ship_owners#new'
 

@@ -1,0 +1,49 @@
+
+<!-- Insert Particles.js -->
+<%= stylesheet_link_tag 'style'%>
+<div id="particles-js"></div>
+<%= javascript_include_tag 'particles', 'app'%>
+<!-- End of Particles.js -->
+
+	<div class="container">
+          <div class="row centered-form">
+          <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">Send Message</h4>
+              </div>
+              <div class="panel-body">
+
+              <!-- Beginning of form -->
+              <%= form_tag("/cargo-owner/message", method: "post") do %>
+
+                  <div class="form-group">
+                    <label for="reciever"><h6 class="panel-title">To</h6></label>
+                    <input type="text" name="reciever" id="reciever" class="form-control input-sm" placeholder="<%= @cargo_owner.first_name.capitalize %>" disabled>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="subject"><h6 class="panel-title">Subject</h6></label>
+                    <input type="text" name="subject" id="subject" class="form-control input-sm" placeholder="Message Subject" required>
+                  </div>
+
+
+                  <div class="form-group">                    
+                    <input type="text" name="content" id="content" class="form-control input-sm" placeholder="Enter your message" required>
+                  </div>
+				
+                  <!-- Hidden Cargo ID -->
+                  <%= hidden_field_tag 'id', @cargo_owner.id %>
+                  <%= hidden_field_tag 'ship_owner', @ship_owner.id %>
+                  <!-- End of Hidden Cargo ID -->
+
+                  <!-- Submit Button -->
+                  <%= submit_tag "Send Message", class: "btn btn-info btn-block" %>
+                  <!-- End of Submit Button -->
+              <% end %>
+              <!-- End of form -->
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>

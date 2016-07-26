@@ -82,11 +82,22 @@ class CargoOwnersController < ApplicationController
 	end
 
 	def create_message
-		@cargo_owner = CargoOwner.where("id = ?", params[:id])
-		@ship_owner = ShipOwner.where("id = ?", params[:ship_owner])
+		cargo_owner = CargoOwner.where("id = ?", params[:id])
+		ship_owner = ShipOwner.where("id = ?", params[:ship_owner])
+		@cargo_owner = cargo_owner[0]
+		@ship_owner = ship_owner[0]
 	end
 
 	def save_message
+		subject = params[:subject]
+		content = params[:content]
+		ship_owner = params[:ship_owner]
+		from = ShipOwner.find_by id: ship_owner
+		
 
+		Message.create(subject: subject, content: content, from: from.first_name, 
+			ship_owner_id: ship_owner, cargo_owner_id: params[:id])
+
+		redirect_to action: 'profile', id: params[:id]
 	end
 end
