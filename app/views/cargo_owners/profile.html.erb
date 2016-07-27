@@ -4,6 +4,7 @@
 	document.getElementById("ratings").disabled = true;
 </script>
 
+<body class="css-gradient">
 <% if @invalid == nil %>
 	<div class="container">
 		<div class="innerwrap">
@@ -42,6 +43,10 @@
 										</div>
 									</form>
 								<% end %>
+							<% else %>
+								<% if session[:current_user_id] == @user.id %>
+										<%= link_to "Inbox", {controller: "cargo_owners", action: "read"}, id: @user.id, class: "btn btn-primary btn-block" %>
+								<% end %>
 							<% end %>
 							<!-- End of Ratings form -->
 								
@@ -49,12 +54,12 @@
 							<% if session[:current_user_class] == "CargoOwner" %>
 								<% if session[:current_user_id] == @user.id %>
 									<span>
-										<%= link_to "Add Cargo", controller: "cargos", action: "show", id: @user.id, class: "white-text-link" %>
+										<%= link_to "Add Cargo", {controller: "cargos", action: "show"}, id: @user.id, class: "btn btn-primary btn-block" %>
 									</span>
 								<% end %>
 							<% else %>
 								<span>
-									<%= link_to "Send Message", controller: "cargo_owners", action: "create_message", class: "white-text-link", ship_owner: session[:current_user_id] %>
+									<%= link_to "Send Message", {controller: "cargo_owners", action: "create_message"}, class: "btn btn-primary btn-block", id: @user.id %>
 								</span>
 							<% end %>
 							<!-- End of Add Ship Link -->
@@ -110,13 +115,18 @@
 				<div class="grid">
 					<% @cargo.each do |cargo| %>
 						<div class="col-md-3 ">
-							<div class="postcont"><img src="<%= asset_path( 'cargo.jpg' ) %>" alt="">
+							<div class="postcont">
+								<img src="<%= asset_path( 'cargo.jpg' ) %>" alt="">
 							</div>
+
 							<div class="profileinfo panel-body white-bg">
 								<img src="<%= asset_path( 'profile-icon.png' ) %>" alt="">
 								<p>Cargo Type: <%= cargo.cargo_type %> </p>
 								<p>Description: <%= cargo.description %> </p>
-								<button class="btn btn-info btn-block"><%= link_to "Auction Cargo", controller: "bids", action: "edit", id: cargo.id %></button>
+							<% if session[:current_user_class] != "CargoOwner" %>
+								<%= link_to "Send Message", {controller: "cargo_owners", action: "create_message", cargo_id: cargo.id, id: @user.id}, class: "btn btn-primary btn-block" %>
+							<% end %>	
+
 							</div>
 						</div>
 					<% end %>	
@@ -134,4 +144,4 @@
 	</div>
 <% end %>
 <!-- End of body -->
-
+</body>

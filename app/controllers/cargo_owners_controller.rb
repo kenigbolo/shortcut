@@ -83,9 +83,13 @@ class CargoOwnersController < ApplicationController
 
 	def create_message
 		cargo_owner = CargoOwner.where("id = ?", params[:id])
-		ship_owner = ShipOwner.where("id = ?", params[:ship_owner])
+		ship_owner = ShipOwner.where("id = ?", session[:current_user_id])
+		cargo = Cargo.where("id = ?", params[:cargo_id])
+		@cargo = cargo[0]
 		@cargo_owner = cargo_owner[0]
 		@ship_owner = ship_owner[0]
+
+		# byebug
 	end
 
 	def save_message
@@ -101,7 +105,10 @@ class CargoOwnersController < ApplicationController
 	end
 	
 	def read
+		cargo_owner = CargoOwner.where("id = ?", params[:id])
+		@cargo_owner = cargo_owner[0]
 
+		@messages = Message.where(:to => @cargo_owner.username).sort_by(&:created_at)
 	end
 end
 

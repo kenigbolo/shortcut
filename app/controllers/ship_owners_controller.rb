@@ -85,8 +85,10 @@ class ShipOwnersController < ApplicationController
 	def create_message
 		cargo_owner = CargoOwner.where("id = ?", params[:cargo_owner])
 		ship_owner = ShipOwner.where("id = ?", params[:id])
+		ship = Ship.where("id = ?", params[:ship_id])
 		@cargo_owner = cargo_owner[0]
 		@ship_owner = ship_owner[0]
+		@ship = ship[0]
 	end
 
 	def save_message

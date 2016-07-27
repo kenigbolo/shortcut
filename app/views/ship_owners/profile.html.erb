@@ -4,7 +4,7 @@
 <script type="text/javascript">
 	document.getElementById("ratings").disabled = true;
 </script>
-
+<body class="css-gradient">
 <% if @invalid == nil %>
 	<div class="container">
 		<div class="innerwrap">
@@ -45,7 +45,7 @@
 								<% end %>
 							<% else %>
 								<% if session[:current_user_id] == @user.id %>
-										<%= link_to "Inbox", controller: "ship_owners", action: "read", id: @user.id, class: "white-text-link" %>
+										<%= link_to "Inbox", {controller: "ship_owners", action: "read"}, id: @user.id, class: "btn btn-primary btn-block" %>
 								<% end %>
 							<% end %>
 								<!-- End of Ratings form -->
@@ -55,7 +55,7 @@
 							<% if session[:current_user_class] == "ShipOwner" %>
 								<% if session[:current_user_id] == @user.id %>
 									<span>
-										<%= link_to "Add Ship", controller: "ships", action: "show", id: @user.id, class: "white-text-link" %>
+										<%= link_to "Add Ship", {controller: "ships", action: "show"}, id: @user.id, class: "btn btn-primary btn-block" %>
 									</span>
 								<% end %>
 							<% else %>
@@ -124,7 +124,13 @@
 								<img src="<%= asset_path( 'profile-icon.png' ) %>" alt="">
 								<p>Ship Type: <%= ship.ship_type %> </p>
 								<p>IMO Number: <%= ship.imo_number %> </p>
-								<button class="btn btn-info btn-block"><%= link_to "Auction ship", controller: "ship_bids", action: "edit_ship", id: ship.id %></button>
+								<!-- <button class="btn btn-info btn-block"> -->
+								<% if session[:current_user_class] == "ShipOwner" %>
+									<% if session[:current_user_id] == @user.id %>
+										<%= link_to "Auction ship", {controller: "ship_bids", action: "edit_ship"}, id: ship.id, class: "btn btn-primary btn-block" %>
+									<% end %>
+								<% end %>
+								<!-- </button> -->
 							</div>
 						</div>
 					<% end %>	
@@ -142,3 +148,4 @@
 	</div>
 <% end %>	
 <!-- End of body -->
+</body>

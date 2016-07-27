@@ -176,7 +176,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
   position: absolute;
     right: 15px;
     top: 16px;
-    background: #6AAFEA;
+    // background: #6AAFEA;
     padding: 8px 11px;
     font-size: 12px;
     line-height: 1;
@@ -271,6 +271,7 @@ section.section2 {
     color: #555;
     font-size: 14px;
     line-height: 13px;
+    margin-bottom: 1em;
 }
 .section2 .profileinfo img {
     border-radius: 50%;

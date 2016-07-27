@@ -32,9 +32,11 @@ class CargosController < ApplicationController
 					flash[:alert] = "Arrival date cannot be today or a previous date"
 					render 'show'
 				else
-					Cargo.create(weight: weight, volume: volume, density: density, cargo_type: cargo_type,
+					cargo = Cargo.create(weight: weight, volume: volume, density: density, cargo_type: cargo_type,
 					 present_port: departure, destination_port: destination, arrival_date: arrival_date, 
 					 status: status, description: description, cargo_owner_id: session[:current_user_id])
+
+					Bid.create(cargo_id: cargo.id, description: description, end_date: arrival_date)
 					flash[:alert] = "Cargo has been succesfully added"
 
 					redirect_to controller: :cargo_owners, action: :profile, id: cargo_owner_id

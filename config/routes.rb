@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get '/marketplace/ship/bid', to: 'ship_bids#show_ship'
 
+  get '/marketplace/filter', to: 'marketplace#show'
+
   post '/marketplace/filter', to: 'marketplace#filter'
 
   #Routes from session page
@@ -34,10 +36,12 @@ Rails.application.routes.draw do
   get '/cargo-owner/:id', to: 'cargo_owners#profile'
 
   get '/cargo-owner/:id/message', to: 'cargo_owners#create_message'
+  
+  get 'cargo-owner/add-cargo/:id', to: 'cargos#show'
+
+  get '/cargo-owner/:id/inbox', to: 'cargo_owners#read'
 
   post '/cargo-owner/message', to: 'cargo_owners#save_message'
-
-  get 'cargo-owner/add-cargo/:id', to: 'cargos#show'
 
   post '/register/cargo-owner', to: 'cargo_owners#new'
 

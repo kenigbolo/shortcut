@@ -21,12 +21,17 @@
                     <label for="reciever"><h6 class="panel-title">To</h6></label>
                     <input type="text" name="reciever" id="reciever" class="form-control input-sm" placeholder="<%= @cargo_owner.first_name.capitalize %>" disabled>
                   </div>
-
+				<% if @cargo == nil%>
                   <div class="form-group">
                     <label for="subject"><h6 class="panel-title">Subject</h6></label>
                     <input type="text" name="subject" id="subject" class="form-control input-sm" placeholder="Message Subject" required>
                   </div>
-
+				<% else %>
+                  <div class="form-group">
+                    <label for="subject"><h6 class="panel-title">Subject</h6></label>
+                    <input type="text" name="subject" id="subject" class="form-control input-sm" placeholder="<%= @cargo.description %>" disabled="">
+                  </div>
+				<% end %>
 
                   <div class="form-group">                    
                     <input type="text" name="content" id="content" class="form-control input-sm" placeholder="Enter your message" required>
