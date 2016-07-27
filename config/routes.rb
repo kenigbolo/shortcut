@@ -53,9 +53,13 @@ Rails.application.routes.draw do
 
   get '/ship-owner/:id/message', to: 'ship_owners#create_message'
 
+  get '/ship-owner/:id/inbox', to: 'ship_owners#read'
+
   post '/ship-owner/message', to: 'ship_owners#save_message'
 
   post '/register/ship-owner', to: 'ship_owners#new'
+
+
 
 
   #Routes from Cargo Page

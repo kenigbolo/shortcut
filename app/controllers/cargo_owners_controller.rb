@@ -99,5 +99,9 @@ class CargoOwnersController < ApplicationController
 
 		redirect_to action: 'profile', id: params[:id]
 	end
+	
+	def read
+
+	end
 end
 

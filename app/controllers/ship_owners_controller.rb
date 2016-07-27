@@ -103,4 +103,11 @@ class ShipOwnersController < ApplicationController
 
 		redirect_to action: 'profile', id: params[:id]
 	end
+
+	def read
+		ship_owner = ShipOwner.where("id = ?", params[:id])
+		@ship_owner = ship_owner[0]
+
+		@messages = Message.where(:to => @ship_owner.username).sort_by(&:created_at)
+	end
 end

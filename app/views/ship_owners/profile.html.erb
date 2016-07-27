@@ -43,6 +43,10 @@
 										</div>
 									</form>
 								<% end %>
+							<% else %>
+								<% if session[:current_user_id] == @user.id %>
+										<%= link_to "Inbox", controller: "ship_owners", action: "read", id: @user.id, class: "white-text-link" %>
+								<% end %>
 							<% end %>
 								<!-- End of Ratings form -->
 							

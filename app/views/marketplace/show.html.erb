@@ -1,10 +1,6 @@
 <link rel="stylesheet" type="text/css" href="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/css/kenigbolo-meya-stephen-s-trendy-site.webflow.2dba93c49.css">
 
-<!-- Insert Particles.js -->
-<%= stylesheet_link_tag 'style'%>
-<div id="particles-js"></div>
-<%= javascript_include_tag 'particles', 'app'%>
-<!-- End of Particles.js -->
+<body class="css-gradient">
 
 <div class="row inline">
 	<!-- Filter Checkboxes -->
@@ -31,7 +27,7 @@
 				<div class="grid">
 					<% @cargos.each do |cargo| %>
 						<% if cargo.present_port != nil %>
-							<div class="col-md-2 white-bg">
+							<div class="col-md-2 ">
 							<% if cargo.cargo_type == "Liquid Bulk" %>
 								<div class="postcont">
 									<img src="<%= asset_path( 'cargo.jpg' ) %>" alt="" class="bid-detail">
@@ -70,7 +66,7 @@
 					<div class="grid">
 						<% @ships.each do |ship| %>
 							<% if ship.present_port != nil %>
-								<div class="col-md-2 white-bg">
+								<div class="col-md-2 ">
 									<div class="postcont"><img src="<%= asset_path( 'ship1.jpg' ) %>" alt="" class="bid-detail">
 									</div>
 									<div class="profileinfo panel-body">
@@ -98,3 +94,4 @@
 	</div>
 </div>
 
+<body>
