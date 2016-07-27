@@ -32,7 +32,9 @@
         </a>
 
         <nav class="navigation-menu w-nav-menu" role="navigation">
-          <a class="navigation-link w-nav-link" href="/">Home</a>
+          <% if session[:current_user_id] == nil %>
+            <%= link_to "Home", {controller: "marketplace", action: "index"}, class: "navigation-link w-nav-link" %>
+          <% end %>
           <a class="navigation-link w-nav-link" href="/contact">Contact</a>
           <a class="navigation-link w-nav-link" href="/marketplace">MarketPlace</a>
           <!-- If session is not nil -->
