@@ -11,7 +11,7 @@
 	              <option > Cargo </option>
 	              <option > Ship </option>
 	            </select>
-				<%= submit_tag "filter", class: "btn btn-info btn-block" %>
+				<%= submit_tag "filter", class: "btn btn-primary btn-block" %>
 			</div>
 		<% end %>
 	</div>
@@ -47,9 +47,11 @@
 									    <li class="list-group-item">To: <%= cargo.destination_port %></li>
 									  </ul>
 									<% if session[:current_user_class] == "ShipOwner" %>
-										<button class="btn btn btn-info btn-block"><%= link_to "Place Bid", controller: "bids", action: "show", id: cargo.id, class: "btn btn-info btn-block"%></button>
+										<!-- <button class="btn btn btn-primary btn-block"> -->
+                      				<%= link_to "Place Bid", {controller: "bids", action: "show"}, id: cargo.id, class: "btn btn-primary btn-block"%>
+										<!-- </button> -->
 									<% else %>
-										<button class="btn btn-info btn-block">Ship Owners Only</button>
+										<button class="btn btn-primary btn-block">Ship Owners Only</button>
 									<% end %>
 								</div>
 							</div>
@@ -79,9 +81,11 @@
 										    <li class="list-group-item">To: <%= ship.destination_port %></li>
 										</ul>
 										<% if session[:current_user_class] == "CargoOwner" %>
-											<button class="btn btn-info btn-block"><%= link_to "Place Bid", controller: "ship_bids", action: "show_ship", id: ship.id %></button>
+											<!-- <button class="btn btn-primary btn-block"> -->
+                                              <%= link_to "Place Bid", {controller: "ship_bids", action: "show_ship"}, id: ship.id, class: "btn btn-primary btn-block" %>
+											<!-- </button> -->
 										<% else %>
-											<button class="btn btn-info btn-block">Cargo Owners Only</button>
+											<button class="btn btn-primary btn-block">Cargo Owners Only</button>
 										<% end %>
 									</div>
 								</div>
