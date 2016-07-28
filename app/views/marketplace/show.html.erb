@@ -48,7 +48,7 @@
 									  </ul>
 									<% if session[:current_user_class] == "ShipOwner" %>
 										<!-- <button class="btn btn btn-primary btn-block"> -->
-                      				<%= link_to "Place Bid", {controller: "bids", action: "show"}, id: cargo.id, class: "btn btn-primary btn-block"%>
+                      				<%= link_to "Place Bid", {controller: "bids", action: "show", id: cargo.id}, class: "btn btn-primary btn-block"%>
 										<!-- </button> -->
 									<% else %>
 										<button class="btn btn-primary btn-block">Ship Owners Only</button>
@@ -66,8 +66,9 @@
 
 				<section class="section2 clearfix">
 					<div class="grid">
+
 						<% @ships.each do |ship| %>
-							<% if ship.present_port != nil %>
+
 								<div class="col-md-2 ">
 									<div class="postcont"><img src="<%= asset_path( 'ship1.jpg' ) %>" alt="" class="bid-detail">
 									</div>
@@ -82,14 +83,14 @@
 										</ul>
 										<% if session[:current_user_class] == "CargoOwner" %>
 											<!-- <button class="btn btn-primary btn-block"> -->
-                                              <%= link_to "Place Bid", {controller: "ship_bids", action: "show_ship"}, id: ship.id, class: "btn btn-primary btn-block" %>
+                                              <%= link_to "Place Bid", {controller: "ship_bids", action: "show_ship", id: ship.id}, class: "btn btn-primary btn-block" %>
 											<!-- </button> -->
 										<% else %>
 											<button class="btn btn-primary btn-block">Cargo Owners Only</button>
 										<% end %>
 									</div>
 								</div>
-							<% end %>
+
 						<% end %>	
 					</div>
 				</section>

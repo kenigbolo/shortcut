@@ -38,10 +38,11 @@ class ShipBidsController < ApplicationController
 		@ship_id = params[:id]
 		@bid = ShipBid.find_by ship_id: @ship_id
 
-		time = @bid.departure_date.strftime("%Y-%m-%d").split("-").map{ |time| time.to_i }
-		time = DateTime.new(time[0], time[1], time[2])
-		@time = Time.parse(time.to_s).to_f * 1000
-
+		if @bid != nil
+			time = @bid.departure_date.strftime("%Y-%m-%d").split("-").map{ |time| time.to_i }
+			time = DateTime.new(time[0], time[1], time[2])
+			@time = Time.parse(time.to_s).to_f * 1000
+		end
 	end
 
 	def new_ship

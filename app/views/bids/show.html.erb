@@ -7,106 +7,105 @@
 <!-- End of Particles.js -->
 <% time = @time %>
 <script type="text/javascript">
-    var deadline = new Date(<%= time %>);
+    var deadline = new Date(<%= @time %>);
     initializeClock('clockdiv', deadline);
 </script>
 
-<!-- Beginning of Body of form -->
-<div class="container">
-<!-- Countdown Timer -->
-  <div class="row centered-form">
-    <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
-      <h1>Countdown</h1>
-      <div id="clockdiv">
-        <div>
-          <span class="days"></span>
-          <div class="smalltext">Days</div>
-        </div>
-        <div>
-          <span class="hours"></span>
-          <div class="smalltext">Hours</div>
-        </div>
-        <div>
-          <span class="minutes"></span>
-          <div class="smalltext">Minutes</div>
-        </div>
-        <div>
-          <span class="seconds"></span>
-          <div class="smalltext">Seconds</div>
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- End of countdown timer -->
 
-<div class="row"></div>
-
-  <div class="row centered-form">
-    <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
-      <div class="panel panel-default">
-        
-        <div class="panel-heading">
-          <h4 class="panel-title">Place Bid </h4>
-        </div>
-        
-        <div class="panel-body">
-          <!-- Beginning of form -->
-          <%= form_tag("/bid/new", method: "post") do %>
-           
-           <!-- Hidden Bid iD -->
-            <%= hidden_field_tag 'bid_id', @bid.id %>
-            <!-- End of hidden Bid ID -->
-            
-
-            <!-- Lowest Bid -->
-            <div class="row">
-              <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                  <p class="panel-title">Lowest Bid</p>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                  <input type="text" name="bid_price" id="bid_price" class="form-control input-sm" 
-                  value=<% if @bid.price != nil %> <%= @bid.price %> <% else %> ---- <% end %> disabled>
-                </div>
-              </div>
+<% if @bid != nil %>
+    <!-- Beginning of Body of form -->
+    <div class="container">
+    <!-- Countdown Timer -->
+      <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+          <h1>Countdown</h1>
+          <div id="clockdiv">
+            <div>
+              <span class="days"></span>
+              <div class="smalltext">Days</div>
             </div>
-            <!-- End of Lowest Bid -->
+            <div>
+              <span class="hours"></span>
+              <div class="smalltext">Hours</div>
+            </div>
+            <div>
+              <span class="minutes"></span>
+              <div class="smalltext">Minutes</div>
+            </div>
+            <div>
+              <span class="seconds"></span>
+              <div class="smalltext">Seconds</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- End of countdown timer -->
+
+    <div class="row"></div>
+
+      <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+          <div class="panel panel-default">
+            
+            <div class="panel-heading">
+              <h4 class="panel-title">Place Bid </h4>
+            </div>
+            
+            <div class="panel-body">
+              <!-- Beginning of form -->
+              <%= form_tag("/bid/new", method: "post") do %>
+               
+               <!-- Hidden Bid iD -->
+                <%= hidden_field_tag 'bid_id', @bid.id %>
+                <!-- End of hidden Bid ID -->
+                
+
+                <!-- Lowest Bid -->
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <p class="panel-title">Lowest Bid</p>
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="text" name="bid_price" id="bid_price" class="form-control input-sm" 
+                      value=<% if @bid.price != nil %> <%= @bid.price %> <% else %> ---- <% end %> disabled>
+                    </div>
+                  </div>
+                </div>
+                <!-- End of Lowest Bid -->
 
 
-            <!-- Place Bid -->
-            <% if @time > (Time.now.to_f * 1000) %>  
-              <div class="form-group">
-                <input type="number" name="price" id="price" class="form-control input-sm" placeholder="Enter Bid" required>
-              </div>
-              <!-- End of Place Bid -->
-              
-              <!-- Submit Button -->
-              <%= submit_tag "Place Bid", class: "btn btn-info btn-block" %>
-              <!-- End of Submit Button -->
-            <% else %>
-              <div class="form-group">
-                  <p class="panel-title">Auction Ended</p>
-              </div>
-            <% end %>
-          <% end %>
-          <!-- End of form -->
+                <!-- Place Bid -->
+                <% if @time > (Time.now.to_f * 1000) %>  
+                  <div class="form-group">
+                    <input type="number" name="price" id="price" class="form-control input-sm" placeholder="Enter Bid" required>
+                  </div>
+                  <!-- End of Place Bid -->
+                  
+                  <!-- Submit Button -->
+                  <%= submit_tag "Place Bid", class: "btn btn-info btn-block" %>
+                  <!-- End of Submit Button -->
+                <% else %>
+                  <div class="form-group">
+                      <p class="panel-title">Auction Ended</p>
+                  </div>
+                <% end %>
+              <% end %>
+              <!-- End of form -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Beginning of Footer -->
-<footer>
-  <div class="center footer w-section" id="footer">
-    <div class="w-container">
-      <div class="footer-text">Copyright Shortcut Inc 2016</div>
-    </div>
-  </div>
-
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  <script type="text/javascript" src="https://daks2k3a4ib2z.cloudfront.net/578741431c0e63b1517d03a6/js/webflow.30539563a.js"></script>
-</footer>
-<!-- End of Footer -->
+<% else %>
+    <div class="container">
+    <!-- Not available message-->
+      <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+          <p>Details of this ship will be made available shortly</p>
+        </div>
+      </div>
+<% end %>

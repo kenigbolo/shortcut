@@ -11,7 +11,7 @@ class MarketplaceController < ApplicationController
 	def show
 		@cargos = Cargo.all
 		@ships = Ship.all
-		@filter = "Cargo"
+		@filter = "Ship"
 	end
 
 	def contact
@@ -24,5 +24,6 @@ class MarketplaceController < ApplicationController
 		@filter = params[:filter]
 
 		render 'show'
+
 	end
 end
