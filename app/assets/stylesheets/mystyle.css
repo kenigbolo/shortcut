@@ -196,8 +196,8 @@ p {
   padding-top: 195px;
   padding-bottom: 195px;
   border-bottom: 4px solid #69b9ff;
-  background-image: -webkit-linear-gradient(270deg, rgba(46, 157, 255, .5), rgba(46, 157, 255, .22)), url("http://uploads.webflow.com/578741431c0e63b1517d03a6/578741441c0e63b1517d03ae_photo-1416359658663-73a3834895eb.jpg");
-  background-image: linear-gradient(180deg, rgba(46, 157, 255, .5), rgba(46, 157, 255, .22)), url("http://uploads.webflow.com/578741431c0e63b1517d03a6/578741441c0e63b1517d03ae_photo-1416359658663-73a3834895eb.jpg");
+/*  background-image: -webkit-linear-gradient(270deg, rgba(46, 157, 255, .5), rgba(46, 157, 255, .22)), url("http://uploads.webflow.com/578741431c0e63b1517d03a6/578741441c0e63b1517d03ae_photo-1416359658663-73a3834895eb.jpg");
+  background-image: linear-gradient(180deg, rgba(46, 157, 255, .5), rgba(46, 157, 255, .22)), url("http://uploads.webflow.com/578741431c0e63b1517d03a6/578741441c0e63b1517d03ae_photo-1416359658663-73a3834895eb.jpg");*/
   background-position: 0% 0%, 50% 50%;
   background-size: auto, cover;
   text-align: center;
